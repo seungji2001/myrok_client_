@@ -8,7 +8,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:storybook/recommended",
     "prettier",
   ],
   overrides: [
@@ -34,5 +33,6 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
   },
 };
