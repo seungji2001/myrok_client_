@@ -1,12 +1,12 @@
 import Toast from '~/components/common/Toast/Toast';
-import { toastListContainer } from '~/components/common/Toast/ToastList/ToastList.styles';
+import * as S from '~/components/common/Toast/ToastList/ToastList.styles';
 import { useToast } from '~/components/common/Toast/useToast';
 
 const ToastList = () => {
   const { toastList } = useToast();
 
   return (
-    <div css={toastListContainer}>
+    <div css={S.toastListContainer}>
       {toastList.map((toast) => {
         const { id, status, message, isActive } = toast;
 

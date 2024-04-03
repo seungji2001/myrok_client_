@@ -2,10 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useToast } from './useToast';
 import Text from '~/components/common/Text/Text';
-import {
-  statusStyling,
-  toastStyling,
-} from '~/components/common/Toast/Toast.styles';
+import * as S from '~/components/common/Toast/Toast.styles';
 
 export interface ToastProps {
   id: string;
@@ -33,7 +30,7 @@ const Toast = (props: ToastProps) => {
     <div
       id={id}
       ref={ref}
-      css={[statusStyling({ status, isActive }), toastStyling]}
+      css={[S.statusStyling({ status, isActive }), S.toastStyling]}
     >
       <Text>{message}</Text>
     </div>

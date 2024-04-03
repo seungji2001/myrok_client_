@@ -1,10 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import type { Size } from '~/types/size';
 import type { ComponentPropsWithoutRef } from 'react';
-import {
-  sizeStyling,
-  weightStyling,
-} from '~/components/common/Text/Text.styles';
+import * as S from '~/components/common/Text/Text.styles';
 
 export interface TextProps extends ComponentPropsWithoutRef<'p'> {
   size?: Size;
@@ -15,7 +12,7 @@ const Text = (props: TextProps) => {
   const { size = 'md', weight = 'normal', children, ...attributes } = props;
 
   return (
-    <p css={[sizeStyling(size), weightStyling(weight)]} {...attributes}>
+    <p css={[S.sizeStyling(size), S.weightStyling(weight)]} {...attributes}>
       {children}
     </p>
   );

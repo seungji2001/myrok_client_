@@ -39,3 +39,21 @@ export const skeletonAnimation = keyframes`
    background-position: 0% 50%;
  }
 `;
+
+export const slideLeft = keyframes`
+from {
+  transform: translateX(140%);
+}
+to {
+  transform: translateX(0);
+}  
+`;
+
+export const slideRight = keyframes`
+from {
+  transform: translateX(0);
+}
+to {
+  transform: translateX(140%);
+}  
+`;

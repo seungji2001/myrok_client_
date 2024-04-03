@@ -83,12 +83,21 @@ export const GlobalReset = css`
   time,
   mark,
   audio,
+  button,
   video {
     margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
     font: inherit;
+    font-family:
+      'GamtanRoad',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Open Sans',
+      'Helvetica Neue',
+      sans-serif;
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */

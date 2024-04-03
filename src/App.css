@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 900;
+  font-display: swap;
+  src:
+    local('GamtanRoad Tantan'),
+    url('assets/fonts/GamtanRoad-Tantan.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 800;
+  font-display: swap;
+  src:
+    local('GamtanRoad Tantan'),
+    url('assets/fonts/GamtanRoad-Tantan.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('GamtanRoad Tantan'),
+    url('assets/fonts/GamtanRoad-Tantan.woff') format('woff');
+}
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 600;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Bold'),
+    url('assets/fonts/GamtanRoad-Dotum-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 500;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Bold'),
+    url('assets/fonts/GamtanRoad-Dotum-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Regular'),
+    url('assets/fonts/GamtanRoad-Dotum-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 300;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Regular'),
+    url('assets/fonts/GamtanRoad-Dotum-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 200;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Thin'),
+    url('assets/fonts/GamtanRoad-Dotum-Thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'GamtanRoad';
+  font-weight: 100;
+  font-display: swap;
+  src:
+    local('GamtanRoad Dotum Thin'),
+    url('assets/fonts/GamtanRoad-Dotum-Thin.woff') format('woff');
+}

@@ -5,11 +5,7 @@ import {
   type ComponentPropsWithRef,
   type ForwardedRef,
 } from 'react';
-import {
-  buttonStyling,
-  getSizeStyling,
-  getVariantStyling,
-} from '~/components/common/Button/Button.styles';
+import * as S from '~/components/common/Button/Button.styles';
 
 export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   size?: Extract<Size, 'sm' | 'md' | 'lg'>;
@@ -28,9 +24,9 @@ const Button = (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
   return (
     <button
       css={[
-        getSizeStyling(size, variant),
-        getVariantStyling(variant),
-        buttonStyling,
+        S.getSizeStyling(size, variant),
+        S.getVariantStyling(variant),
+        S.buttonStyling,
       ]}
       ref={ref}
       type={type}

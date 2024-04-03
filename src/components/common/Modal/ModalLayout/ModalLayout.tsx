@@ -6,7 +6,7 @@ import {
   type ComponentPropsWithoutRef,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { modalLayoutContainer } from '~/components/common/Modal/ModalLayout/ModalLayout.styles';
+import * as S from '~/components/common/Modal/ModalLayout/ModalLayout.styles';
 import { useModal } from '~/components/common/Modal/useModal';
 import { useKeydownEffect } from '~/hooks/useKeydownEffect';
 
@@ -45,7 +45,7 @@ const ModalLayout = (props: PropsWithChildren<ModalLayoutProps>) => {
         createPortal(
           <dialog
             ref={ref}
-            css={modalLayoutContainer}
+            css={S.modalLayoutContainer}
             open={isModalOpen}
             {...attribute}
           >

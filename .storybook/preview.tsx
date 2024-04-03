@@ -8,6 +8,7 @@ import { handlers } from '../src/server/handlers';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { ToastProvider } from '../src/components/common/Toast/ToastContext';
+import { ROUTES } from '../src/constants/routes';
 
 initialize();
 
@@ -28,6 +29,7 @@ const queryClient = new QueryClient();
 
 export const decorators = [
   (Story) => (
+    <MemoryRouter initialEntries={[ROUTES.ROOT]}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={Theme}>
           <Global styles={GlobalReset} />
@@ -36,6 +38,7 @@ export const decorators = [
           </ToastProvider>
         </ThemeProvider>
       </QueryClientProvider>
+    </MemoryRouter>
   ),
   mswDecorator,
 ];

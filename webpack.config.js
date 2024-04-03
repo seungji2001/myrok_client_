@@ -1,7 +1,10 @@
 const { join, resolve } = require('path');
+const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv');
 
 const isProduction = process.env.NODE_ENV === 'production';
+Dotenv.config();
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
@@ -12,7 +15,7 @@ module.exports = {
       directory: join(__dirname, 'public'),
     },
     historyApiFallback: true,
-    port: 3001,
+    port: 3000,
     compress: true,
   },
   resolve: {
@@ -63,6 +66,12 @@ module.exports = {
       template: join(__dirname, './public/index.html'),
       hash: true,
       favicon: join(__dirname, './public/favicon.ico'),
+    }),
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+      'process.env.NODE_ENV': JSON.stringify(
+        isProduction ? 'production' : 'development',
+      ),
     }),
   ],
 };

@@ -7,23 +7,23 @@ export const getVariantStyling = (
 ) => {
   const style = {
     primary: css({
-      backgroundColor: Theme.color.gray900,
+      backgroundColor: Theme.color.primary,
 
       color: Theme.color.white,
 
       '&:hover:enabled': {
-        backgroundColor: Theme.color.gray800,
+        backgroundColor: Theme.color.primary500,
       },
 
       '&:focus': {
-        boxShadow: `0 0 0 3px ${Theme.color.gray800}`,
+        boxShadow: `0 0 0 3px ${Theme.color.primary500}`,
       },
     }),
 
     normal: css({
       backgroundColor: Theme.color.white,
 
-      color: Theme.color.gray900,
+      color: Theme.color.primary500,
 
       '&:hover:enabled': {
         backgroundColor: `${Theme.color.gray200}`,
