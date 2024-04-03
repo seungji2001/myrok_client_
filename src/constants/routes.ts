@@ -3,4 +3,5 @@ export const ROUTES = {
   START: '/start',
   JOIN: '/join',
   CREATE: '/create',
+  RELOAD: 0,
 } as const;
