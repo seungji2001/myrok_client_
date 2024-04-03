@@ -11,8 +11,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ROUTES } from '~/constants/routes';
 import LandingPage from '~/pages/LandingPage/LandingPage';
 import StartPage from '~/pages/StartPage/StartPage';
-import CreatePage from '~/pages/CreatePage/CreatePage';
 import JoinPage from '~/pages/JoinPage/JoinPage';
+import CreatePage from '~/pages/CreatePage/CreatePage';
+import NotFoundPage from '~/pages/NotFoundPage/NotFoundPage';
 
 if (process.env.WORKER === 'on') {
   serviceWorker.start({ onUnhandledRequest: 'bypass' });
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
     element: <App />,
+    errorElement: <NotFoundPage />,
     children: [
       { path: '', element: <LandingPage /> },
       { path: ROUTES.START, element: <StartPage /> },
