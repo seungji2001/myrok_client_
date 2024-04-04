@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import * as S from '~/pages/LandingPage/LandingPage.styles';
 import Title from '~/components/common/Title/Title';
 import LogInModal from '~/components/landing/LogInModal/LogInModal';

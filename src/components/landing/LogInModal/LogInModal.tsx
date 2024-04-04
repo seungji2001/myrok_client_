@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { googleLogo } from '~/assets/png';
 import { CloseBoldIcon } from '~/assets/svg';
 import Button from '~/components/common/Button/Button';

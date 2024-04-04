@@ -34,13 +34,13 @@ const CreatePage = () => {
           <form css={S.teamNameForm} onSubmit={handleProjectCreateSubmit}>
             <div css={S.bodyContainer}>
               <Text weight="semiBold" css={S.explainText}>
-                간단한 입력으로 쉽게 팀을 만들어 보세요!
+                간단한 입력으로 쉽게 프로젝트를 만들어 보세요!
               </Text>
               <div css={S.inputWrapper}>
                 <Input
                   width="100%"
                   height="90%"
-                  placeholder="팀 이름 입력"
+                  placeholder="프로젝트 이름 입력"
                   ref={inputRef}
                   value={projectName}
                   onChange={handleProjectNameChange}
@@ -102,9 +102,9 @@ const CreatePage = () => {
                 variant="primary"
                 css={S.submitButton}
                 disabled={projectName.length < 1}
-                aria-label="팀 개설"
+                aria-label="생성하기"
               >
-                팀 개설
+                생성하기
               </Button>
             </div>
           </form>

@@ -72,7 +72,7 @@ const JoinPage = () => {
                   variant="plain"
                   type="button"
                   css={S.createPageButton}
-                  aria-label="팀 개설하기 페이지 이동"
+                  aria-label="프로젝트 생성하기 페이지 이동"
                   onClick={handleCreatePageClicked}
                 >
                   직접 프로젝트를 만들어보세요!
@@ -85,9 +85,9 @@ const JoinPage = () => {
                 variant="primary"
                 css={S.submitButton}
                 disabled={inviteCode.length < 8}
-                aria-label="팀 참가"
+                aria-label="참가하기"
               >
-                팀 참가
+                참가하기
               </Button>
             </div>
           </form>

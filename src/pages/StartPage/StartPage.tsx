@@ -37,15 +37,15 @@ const StartPage = () => {
         <div css={S.innerContainer(clickedButton)} ref={ref}>
           <div css={S.buttonContainer}>
             <Text weight="semiBold" css={S.explainText}>
-              우리 팀만의 공간이 필요하신가요?
+              우리만의 공간이 필요하신가요?
             </Text>
             <Button
               variant="primary"
               css={S.startTeamButton()}
               onClick={() => handleButtonClick('create')}
-              aria-label="팀 개설하기"
+              aria-label="프로젝트 생성"
             >
-              팀 개설하기
+              프로젝트 생성
             </Button>
           </div>
           <div css={S.buttonContainer}>
@@ -56,9 +56,9 @@ const StartPage = () => {
               variant="normal"
               css={S.startTeamButton()}
               onClick={() => handleButtonClick('join')}
-              aria-label="팀 참가하기"
+              aria-label="프로젝트 참가"
             >
-              팀 참가하기
+              프로젝트 참가
             </Button>
           </div>
         </div>
