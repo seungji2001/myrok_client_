@@ -15,6 +15,9 @@ import JoinPage from '~/pages/JoinPage/JoinPage';
 import CreatePage from '~/pages/CreatePage/CreatePage';
 import NotFoundPage from '~/pages/NotFoundPage/NotFoundPage';
 import LoginPage from '~/pages/LoginPage/LoginPage';
+import ProtectRoute from '~/components/common/ProtectRoute/ProtectRoute';
+import DashBoardPage from '~/pages/DashBoardPage/DashBoardPage';
+import ProjectHolder from '~/pages/ProjectHolder/ProjectHolder';
 
 if (process.env.WORKER === 'on') {
   serviceWorker.start({ onUnhandledRequest: 'bypass' });
@@ -30,9 +33,16 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <LandingPage /> },
       { path: ROUTES.LOGIN, element: <LoginPage /> },
-      { path: ROUTES.START, element: <StartPage /> },
-      { path: ROUTES.CREATE, element: <CreatePage /> },
-      { path: ROUTES.JOIN, element: <JoinPage /> },
+      {
+        element: <ProtectRoute />,
+        children: [
+          { path: ROUTES.PROJECT_HOLDER, element: <ProjectHolder /> },
+          { path: ROUTES.DASH_BOARD, element: <DashBoardPage /> },
+          { path: ROUTES.START, element: <StartPage /> },
+          { path: ROUTES.CREATE, element: <CreatePage /> },
+          { path: ROUTES.JOIN, element: <JoinPage /> },
+        ],
+      },
     ],
   },
 ]);
