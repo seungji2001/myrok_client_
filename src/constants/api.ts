@@ -14,6 +14,13 @@ export const ERROR_CODE = {
   NOT_FOUND: 'C001',
   DUPLICATE_PROJECT: 'P001',
   NOT_ACCEPTABLE: 'P003',
+  EXPIRED_ACCESS_TOKEN: '????',
+  INVALID_ACCESS_TOKEN: '????',
+  INVALID_REFRESH_TOKEN: '????',
+  EXPIRED_REFRESH_TOKEN: '????',
+  NULL_REFRESH_TOKEN: '????',
+  UNEXPECTED_TOKEN_ERROR: '????',
+  UNAUTHORIZED: '????',
 } as const;
 
 export const HTTP_ERROR_MESSAGE = {
@@ -36,3 +43,15 @@ export const HTTP_ERROR_MESSAGE = {
 
 export const ERROR_MESSAGE =
   '오류가 발생했습니다. 잠시 후 다시 시도해주세요.' as const;
+
+export const LOCAL_STORAGE = {
+  ACCESS_TOKEN: 'myrok_accessToken',
+  REFRESH_TOKEN: 'myrok_refreshToken',
+} as const;
+
+export const NETWORK = {
+  RETRY_COUNT: 2,
+  TIMEOUT: 10000,
+} as const;
+
+export const AXIOS_BASE_URL = '' as const;

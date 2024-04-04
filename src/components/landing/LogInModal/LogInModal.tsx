@@ -5,9 +5,22 @@ import Button from '~/components/common/Button/Button';
 import Modal from '~/components/common/Modal/Modal';
 import Text from '~/components/common/Text/Text';
 import * as S from '~/components/landing/LogInModal/LogInModal.styles';
+import { usePostGoogleLogin } from '~/hooks/@query/usePostGoogleLogin';
 import { Theme } from '~/styles/Theme';
 
 const LogInModal = () => {
+  const { mutateGoogleLogin } = usePostGoogleLogin();
+
+  const handleGoogleLoginClick = () => {
+    mutateGoogleLogin(undefined, {
+      onSuccess: (data) => {
+        const { loginUrl } = data;
+
+        window.location.href = loginUrl;
+      },
+    });
+  };
+
   return (
     <Modal>
       <Modal.Button act="open" variant="primary" css={S.logInModalButton}>
@@ -34,7 +47,10 @@ const LogInModal = () => {
           </Modal.Button>
         </div>
         <div css={S.logInButtonWrapper}>
-          <Button css={S.googleLoginButtonContainer}>
+          <Button
+            css={S.googleLoginButtonContainer}
+            onClick={handleGoogleLoginClick}
+          >
             <img css={S.googleImg} src={googleLogo} alt="구글로고" />
             Google 계정으로 로그인하기
           </Button>
