@@ -1,4 +1,5 @@
-export interface UserProjectInfo {
+import type { ProjectInfo } from '~/types/project';
+
+export interface UserProjectInfo extends ProjectInfo {
   projectId: number;
-  projectName: string;
 }

@@ -5,8 +5,11 @@ import {
   type FocusEventHandler,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useToast } from '~/components/common/Toast/useToast';
-import type { Period } from '~/types/project';
+import { ROUTES } from '~/constants/routes';
+import { usePostCreateProject } from '~/hooks/@query/usePostCreateProject';
+import type { Period, YYYYMMDD } from '~/types/project';
 import { isYYYYMMDD } from '~/types/typeGuard';
 import { generateYYYYMMDD } from '~/utils/generateYYYYMMDD';
 
@@ -15,6 +18,8 @@ export const useCreatePage = (inputRef: RefObject<HTMLInputElement>) => {
   const [isClicked, setIsClicked] = useState(false);
   const [period, setPeriod] = useState<Period>();
   const { showToast } = useToast();
+  const { mutatePostCreateProject } = usePostCreateProject();
+  const navigate = useNavigate();
 
   const handleProjectNameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setProjectName(() => e.target.value);
@@ -23,12 +28,19 @@ export const useCreatePage = (inputRef: RefObject<HTMLInputElement>) => {
   const handleProjectCreateSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
+    if (projectName.length === 0) {
+      showToast('error', '프로젝트 이름을 작성해주세요.');
+
+      return;
+    }
+
     if (period !== undefined) {
       if (period.startDate > period.endDate) {
         showToast(
           'error',
           '프로젝트 마감날짜는 시작날짜보다 나중이어야 합니다.',
         );
+
         return;
       }
     }
@@ -41,6 +53,19 @@ export const useCreatePage = (inputRef: RefObject<HTMLInputElement>) => {
       inputRef.current?.focus();
       return;
     }
+
+    mutatePostCreateProject(
+      {
+        projectName: projectName,
+        startDate: period === undefined ? ('' as YYYYMMDD) : period.startDate,
+        endDate: period === undefined ? ('' as YYYYMMDD) : period.endDate,
+      },
+      {
+        onSuccess: () => {
+          navigate(ROUTES.DASH_BOARD);
+        },
+      },
+    );
   };
 
   const handlePeriodShowClicked = () => {

@@ -24,6 +24,7 @@ const ProtectRoute = () => {
       if (projectInfo.projectId === 0) navigate(ROUTES.START);
     }
   }, [isFetched]);
+
   return (
     <ProjectProvider>
       <Outlet />
