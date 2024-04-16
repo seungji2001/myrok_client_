@@ -8,7 +8,7 @@ import Button from '~/components/common/Button/Button';
 
 export interface ErrorProps {
   statusCode?: number;
-  errorCode?: number;
+  errorCode?: String;
   resetError?: () => void;
 }
 

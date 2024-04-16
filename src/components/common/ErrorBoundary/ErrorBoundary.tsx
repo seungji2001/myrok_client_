@@ -1,4 +1,4 @@
-import type { ComponentType, PropsWithChildren } from 'react';
+import type { ComponentType, ErrorInfo, PropsWithChildren } from 'react';
 import { Component } from 'react';
 import { HTTPError } from '~/apis/HTTPError';
 import { ErrorProps } from '~/components/common/Error/Error';
@@ -24,7 +24,7 @@ class ErrorBoundary extends Component<
 > {
   state: State = initialState;
 
-  static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error | HTTPError): State {
     return { hasError: true, error };
   }
 
@@ -44,7 +44,6 @@ class ErrorBoundary extends Component<
       return (
         <Fallback
           statusCode={error instanceof HTTPError ? error.statusCode : undefined}
-          errorCode={error instanceof HTTPError ? error.code : undefined}
           resetError={this.resetErrorBoundary}
         />
       );

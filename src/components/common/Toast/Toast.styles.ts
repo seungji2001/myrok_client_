@@ -27,7 +27,7 @@ export const statusStyling = ({
       animation: isActive
         ? `${fadeInUp} 0.4s ease-in-out both`
         : `${fadeOut} 0.4s ease-in-out both`,
-      backgroundColor: `${Theme.color.gray900}`,
+      backgroundColor: `${Theme.color.primary}`,
     });
 
   if (status === 'error')

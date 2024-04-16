@@ -1,3 +1,4 @@
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,9 +8,12 @@ import { ROUTES } from '~/constants/routes';
 
 export const useResetError = () => {
   const navigate = useNavigate();
+  const { reset } = useQueryErrorResetBoundary();
 
   const handleErrorReset = useCallback(
     (error: Error | HTTPError) => {
+      reset();
+
       if (error instanceof Error && !(error instanceof HTTPError)) {
         navigate(ROUTES.ROOT);
 

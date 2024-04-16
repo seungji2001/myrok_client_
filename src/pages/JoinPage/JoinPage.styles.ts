@@ -130,6 +130,6 @@ export const submitButton = css`
 
 export const warningText = css`
   height: 16px;
-
+  margin-left: 10px;
   color: ${Theme.color.red};
 `;

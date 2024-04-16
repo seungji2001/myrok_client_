@@ -6,7 +6,7 @@ import type { UserProjectInfo } from '~/types/user';
 export const useGetUserProjectInfo = () => {
   const { data, isFetched } = useQuery({
     queryKey: ['userProjectInfo'],
-    queryFn: () => getUserProjectInfo(),
+    queryFn: getUserProjectInfo,
   });
 
   if (data?.projectId === undefined) {

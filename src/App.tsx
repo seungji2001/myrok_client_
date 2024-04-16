@@ -3,14 +3,17 @@ import './App.css';
 import { useResetError } from '~/hooks/useResetError';
 import ErrorBoundary from '~/components/common/ErrorBoundary/ErrorBoundary';
 import Error from '~/components/common/Error/Error';
+import { QueryErrorResetBoundary } from '@tanstack/react-query';
 
 function App() {
   const { handleErrorReset } = useResetError();
 
   return (
-    <ErrorBoundary Fallback={Error} onReset={handleErrorReset}>
-      <Outlet />
-    </ErrorBoundary>
+    <QueryErrorResetBoundary>
+      <ErrorBoundary Fallback={Error} onReset={handleErrorReset}>
+        <Outlet />
+      </ErrorBoundary>
+    </QueryErrorResetBoundary>
   );
 }
 

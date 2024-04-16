@@ -83,6 +83,7 @@ const JoinPage = () => {
               <BackButton label="이전 단계로" />
               <Button
                 variant="primary"
+                type="submit"
                 css={S.submitButton}
                 disabled={inviteCode.length < 8}
                 aria-label="참가하기"

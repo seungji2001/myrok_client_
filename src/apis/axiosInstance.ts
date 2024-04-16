@@ -5,11 +5,10 @@ import {
   handleAPIError,
   handleTokenError,
 } from '~/apis/interceptors';
-import { AXIOS_BASE_URL, NETWORK } from '~/constants/api';
+import { AXIOS_BASE_URL } from '~/constants/api';
 
 export const axiosInstance = axios.create({
   baseURL: AXIOS_BASE_URL,
-  timeout: NETWORK.TIMEOUT,
   withCredentials: true,
 });
 

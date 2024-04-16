@@ -62,6 +62,7 @@ export const useCreatePage = (inputRef: RefObject<HTMLInputElement>) => {
       },
       {
         onSuccess: () => {
+          showToast('success', '프로젝트를 생성했어요. 팀원을 초대해보세요!');
           navigate(ROUTES.DASH_BOARD);
         },
       },

@@ -18,12 +18,23 @@ import LoginPage from '~/pages/LoginPage/LoginPage';
 import ProtectRoute from '~/components/common/ProtectRoute/ProtectRoute';
 import DashBoardPage from '~/pages/DashBoardPage/DashBoardPage';
 import ProjectHolder from '~/pages/ProjectHolder/ProjectHolder';
+import ProtectProjectRoute from '~/components/common/ProtectProjectRoute/ProtectProjectRoute';
 
 if (process.env.WORKER === 'on') {
   serviceWorker.start({ onUnhandledRequest: 'bypass' });
 }
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      throwOnError: true,
+      retry: false,
+    },
+    mutations: {
+      retry: false,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -36,11 +47,16 @@ const router = createBrowserRouter([
       {
         element: <ProtectRoute />,
         children: [
+          {
+            element: <ProtectProjectRoute />,
+            children: [
+              { path: ROUTES.START, element: <StartPage /> },
+              { path: ROUTES.CREATE, element: <CreatePage /> },
+              { path: ROUTES.JOIN, element: <JoinPage /> },
+            ],
+          },
           { path: ROUTES.PROJECT_HOLDER, element: <ProjectHolder /> },
           { path: ROUTES.DASH_BOARD, element: <DashBoardPage /> },
-          { path: ROUTES.START, element: <StartPage /> },
-          { path: ROUTES.CREATE, element: <CreatePage /> },
-          { path: ROUTES.JOIN, element: <JoinPage /> },
         ],
       },
     ],

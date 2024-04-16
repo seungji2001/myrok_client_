@@ -60,6 +60,7 @@ export const handleTokenError = async (
       data.code === ERROR_CODE.INVALID_ACCESS_TOKEN)
   ) {
     localStorage.removeItem(LOCAL_STORAGE.ACCESS_TOKEN);
+    localStorage.removeItem(LOCAL_STORAGE.REFRESH_TOKEN);
 
     throw new HTTPError(status, data.message, data.code, data.detail);
   }

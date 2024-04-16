@@ -14,6 +14,7 @@ export const ERROR_CODE = {
   NOT_FOUND: 'C001',
   DUPLICATE_PROJECT: 'P001',
   NOT_ACCEPTABLE: 'P003',
+  INVALID_INVITE_CODE: 'P004',
   EXPIRED_ACCESS_TOKEN: '????',
   INVALID_ACCESS_TOKEN: '????',
   INVALID_REFRESH_TOKEN: '????',
@@ -39,6 +40,16 @@ export const HTTP_ERROR_MESSAGE = {
     BODY: '확인 후 다시 시도해주세요.',
     BUTTON: '홈으로 가기',
   },
+  [HTTP_STATUS_CODE.NOT_ACCEPTABLE]: {
+    HEADING: '잘못된 접근입니다.',
+    BODY: '접근 불가능한 페이지 입니다.',
+    BUTTON: '홈으로 가기',
+  },
+  [HTTP_STATUS_CODE.UNAUTHORIZED]: {
+    HEADING: '잘못된 접근입니다.',
+    BODY: '접근 불가능한 페이지 입니다.',
+    BUTTON: '홈으로 가기',
+  },
 } as const;
 
 export const ERROR_MESSAGE =
@@ -47,11 +58,6 @@ export const ERROR_MESSAGE =
 export const LOCAL_STORAGE = {
   ACCESS_TOKEN: 'myrok_accessToken',
   REFRESH_TOKEN: 'myrok_refreshToken',
-} as const;
-
-export const NETWORK = {
-  RETRY_COUNT: 2,
-  TIMEOUT: 10000,
 } as const;
 
 export const AXIOS_BASE_URL = '' as const;
