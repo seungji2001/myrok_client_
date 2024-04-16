@@ -37,7 +37,7 @@ export const getVariantStyling = (
     plain: css({
       backgroundColor: 'transparent',
 
-      color: Theme.color.gray900,
+      color: Theme.color.black,
 
       '&:focus': {
         boxShadow: `0 0 0 3px ${Theme.color.gray200}`,

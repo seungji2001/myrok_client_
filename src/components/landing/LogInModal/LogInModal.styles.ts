@@ -59,7 +59,7 @@ export const googleLoginButtonContainer = css`
   border: 1px solid ${Theme.color.gray200};
   border-radius: 12px;
   background-color: ${Theme.color.white};
-  color: ${Theme.color.gray900};
+  color: ${Theme.color.black};
   font-weight: 600;
 
   box-shadow: 0 12px 20px ${Theme.color.gray200};

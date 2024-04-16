@@ -36,13 +36,13 @@ const getUserProjectInfo: Parameters<typeof rest.get>[1] = async (
 
   const projectInfo = [{}, fakeProjectInfo];
 
-  if (fakeProjectInfo.projectId === 1) {
-    return res(ctx.status(200), ctx.json(projectInfo[randomNumber]));
-    // return res(
-    //   ctx.status(401),
-    //   ctx.json({ statusCode: 40100, message: '응애잘못되었다', code: 'C001' }),
-    // );
-  }
+  // if (fakeProjectInfo.projectId === 1) {
+  //   return res(ctx.status(200), ctx.json(projectInfo[randomNumber]));
+  //   // return res(
+  //   //   ctx.status(401),
+  //   //   ctx.json({ statusCode: 40100, message: '응애잘못되었다', code: 'C001' }),
+  //   // );
+  // }
 
   return res(ctx.status(200), ctx.json(fakeProjectInfo));
   // return res(
