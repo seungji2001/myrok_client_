@@ -24,7 +24,6 @@ const Pagination = (props: PaginationProps) => {
           >
             <Text
               css={{ color: currentPage === index + 1 ? 'red' : 'black' }}
-              size="xl"
               weight={currentPage === index + 1 ? 'bold' : 'normal'}
             >
               {index + 1}
