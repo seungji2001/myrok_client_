@@ -15,8 +15,7 @@ export const usePostRecord = () => {
       });
       const { recordId } = response.data;
 
-      alert(`${recordId}로 생성 완료임~`);
-      navigate(ROUTES.MEETING_MINUTES);
+      navigate(`${ROUTES.MEETING_MINUTES}/${recordId}`);
     },
   });
 

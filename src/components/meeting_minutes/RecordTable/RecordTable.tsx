@@ -100,7 +100,12 @@ const RecordTable = () => {
                         recordDate,
                         recordWriterName,
                       }) => (
-                        <tr key={recordId}>
+                        <tr
+                          key={recordId}
+                          onClick={() =>
+                            navigate(`/meeting-minutes/${recordId}`)
+                          }
+                        >
                           <td>
                             <Text weight="semiBold" size="lg">
                               {recordName}

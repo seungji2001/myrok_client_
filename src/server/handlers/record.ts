@@ -1,14 +1,32 @@
 import { rest } from 'msw';
 import { projectMemberNames } from '~/server/mocks/project';
-import { recordList as recordListData } from '~/server/mocks/record';
+import {
+  recordList as recordListData,
+  record as recordData,
+} from '~/server/mocks/record';
 
 let recordList = [...recordListData];
+let record = [...recordData];
 let lastRecordId = recordListData[0].recordId;
+
 export const recordHandler = () => {
   return [
     rest.get('/myrok/list', getRecordList),
+    rest.get('/myrok/records/:recordId', getRecord),
     rest.post('/myrok/records', postRecord),
   ];
+};
+
+const getRecord: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  const { recordId } = req.params;
+
+  const recordDetail = record.find(
+    (data) => data.recordId === Number(recordId),
+  );
+
+  if (recordDetail === undefined) return res(ctx.status(404));
+
+  return res(ctx.status(200), ctx.json({ ...recordDetail }));
 };
 
 const getRecordList: Parameters<typeof rest.get>[1] = async (_, res, ctx) => {
@@ -40,6 +58,20 @@ const postRecord: Parameters<typeof rest.post>[1] = async (req, res, ctx) => {
     },
     ...recordList,
   ];
+
+  const member = memberList.map((memberId: number) => {
+    return projectMemberNames.find((project) => project.memberId === memberId);
+  });
+
+  record.push({
+    recordId: lastRecordId,
+    recordName: recordName,
+    recordDate: recordDate,
+    recordWriterId: recordWriterId,
+    recordContent: recordContent,
+    tagList: [...tagList],
+    memberList: [...member],
+  });
 
   return res(
     ctx.status(200),

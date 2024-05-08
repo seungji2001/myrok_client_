@@ -13,6 +13,19 @@ const color = {
   gray50: '#f9f9f9',
 } as const;
 
+const presetColors = [
+  'blue',
+  'purple',
+  'green',
+  'magenta',
+  'pink',
+  'red',
+  'orange',
+  '#1d39c4',
+  '#aa775a',
+  '#219d7b',
+] as const;
+
 const zIndex = {
   header: 1,
   backdrop: 1,
@@ -20,4 +33,4 @@ const zIndex = {
   toast: 4,
 } as const;
 
-export const Theme = { color, zIndex };
+export const Theme = { color, presetColors, zIndex };
