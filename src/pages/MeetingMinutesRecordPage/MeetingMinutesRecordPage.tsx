@@ -6,6 +6,7 @@ import NotFoundPage from '~/pages/NotFoundPage/NotFoundPage';
 import { Theme } from '~/styles/Theme';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
 import * as S from '~/pages/MeetingMinutesRecordPage/MeetingMinutesRecordPage.styles';
+import SummaryBox from '~/components/meeting_minutes/SummaryBox/SummaryBox';
 
 const MeetingMinutesRecordPage = () => {
   const recordId = useParams().recordId;
@@ -29,6 +30,7 @@ const MeetingMinutesRecordPage = () => {
   return (
     <div css={S.meetingMinutesRecordPageContainer}>
       <div css={S.recordDetailContainer}>
+        <SummaryBox recordId={Number(recordId)} />
         <div dangerouslySetInnerHTML={{ __html: recordContent }}></div>
       </div>
       <div css={S.infoContainer}>

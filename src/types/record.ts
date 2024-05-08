@@ -22,3 +22,8 @@ export interface RecordDetail extends Omit<Record, 'projectId' | 'memberList'> {
   recordId: number;
   memberList: Pick<UserInfo, 'memberId' | 'name'>[];
 }
+
+export interface Summary {
+  summaryId: number;
+  summary: string;
+}
