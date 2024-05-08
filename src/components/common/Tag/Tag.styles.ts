@@ -21,6 +21,8 @@ export const tagWrapper = (color: string, outLine: boolean) => {
     padding: 4px 10px;
 
     width: fit-content;
+    height: fit-content;
+
     border-radius: 4px;
 
     ${outLine ? style['border'] : style['backGround']}
@@ -32,7 +34,7 @@ export const checkTagWrapper = (
   outLine: boolean,
   isChecked: boolean,
 ) => {
-  color = isChecked ? generateDarkenHex(color, 40) : color;
+  color = isChecked ? generateDarkenHex(color, 80) : color;
 
   return css`
     cursor: pointer;

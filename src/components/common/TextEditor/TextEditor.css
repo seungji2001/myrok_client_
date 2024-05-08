@@ -1,0 +1,11 @@
+.ck-editor__editable {
+  min-height: 400px;
+  max-height: 800px;
+}
+
+.ck-editor__main,
+.ck-focused,
+.ck-blurred {
+  min-height: 400px;
+  max-height: 800px;
+}

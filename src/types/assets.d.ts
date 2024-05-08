@@ -8,3 +8,8 @@ declare module '*.svg' {
 }
 
 declare module '*.png';
+
+declare module 'ckeditor5/*' {
+  const classes: any;
+  export default classes;
+}

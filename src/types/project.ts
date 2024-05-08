@@ -11,4 +11,4 @@ export interface ProjectInfo extends Period {
   projectName: string;
 }
 
-export type ProjectMemberNames = Extract<UserInfo, 'memberId' | 'name'>;
+export type ProjectMemberNames = Pick<UserInfo, 'memberId' | 'name'>;

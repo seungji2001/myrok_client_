@@ -10,7 +10,7 @@ export const projectHandlers = () => {
   ];
 };
 
-const postCreateProject: Parameters<typeof rest.get>[1] = async (
+const postCreateProject: Parameters<typeof rest.post>[1] = async (
   req,
   res,
   ctx,
@@ -33,7 +33,7 @@ const postCreateProject: Parameters<typeof rest.get>[1] = async (
   );
 };
 
-const postJoinProject: Parameters<typeof rest.get>[1] = async (
+const postJoinProject: Parameters<typeof rest.post>[1] = async (
   req,
   res,
   ctx,

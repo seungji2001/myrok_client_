@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '~/components/common/Button/Button';
 import Pagination from '~/components/common/Pagination/Pagination';
 import Text from '~/components/common/Text/Text';
 import EmptyRecordPlaceholder from '~/components/meeting_minutes/EmptyRecordPlaceholder/EmptyRecordPlaceholder';
 import * as S from '~/components/meeting_minutes/RecordTable/RecordTable.styles';
+import { ROUTES } from '~/constants/routes';
 import { useGetRecordList } from '~/hooks/@query/useGetRecordList';
 import type { RecordInfo } from '~/types/record';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
@@ -15,6 +17,7 @@ const RecordTable = () => {
   const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortMethod, setSortMethod] = useState<'new' | 'old'>('new');
+  const navigate = useNavigate();
   const { recordInfoList } = useGetRecordList();
 
   useEffect(() => {
@@ -42,6 +45,7 @@ const RecordTable = () => {
             aria-label="새로운 회의록 작성하기"
             variant="primary"
             size="lg"
+            onClick={() => navigate(ROUTES.MEETING_MINUTES_WRITE)}
           >
             회의록 작성
           </Button>

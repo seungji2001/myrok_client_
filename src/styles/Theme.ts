@@ -10,6 +10,7 @@ const color = {
   gray250: '#c9c9c9',
   gray200: '#dbd9d9',
   gray100: '#f3f5f7',
+  gray50: '#f9f9f9',
 } as const;
 
 const zIndex = {

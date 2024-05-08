@@ -15,6 +15,7 @@ const CheckTag = (props: CheckTagProps, ref: ForwardedRef<HTMLSpanElement>) => {
     color = Theme.color.gray250,
     outLine = false,
     handleTagCheck,
+    ...attribute
   } = props;
   const [isChecked, setIsChecked] = useState(false);
 
@@ -26,6 +27,7 @@ const CheckTag = (props: CheckTagProps, ref: ForwardedRef<HTMLSpanElement>) => {
         handleTagCheck();
       }}
       ref={ref}
+      {...attribute}
     >
       {content}
     </span>

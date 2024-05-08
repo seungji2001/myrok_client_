@@ -12,6 +12,7 @@ export const headerContainer = css`
   padding: 0 14px;
 
   border-bottom: 2px solid ${Theme.color.gray250};
+  background-color: ${Theme.color.white};
 `;
 
 export const titleWrapper = css`

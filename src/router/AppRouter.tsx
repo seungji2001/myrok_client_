@@ -10,6 +10,7 @@ import JoinPage from '~/pages/JoinPage/JoinPage';
 import LandingPage from '~/pages/LandingPage/LandingPage';
 import LoginPage from '~/pages/LoginPage/LoginPage';
 import MeetingMinutesPage from '~/pages/MeetingMinutesPage/MeetingMinutesPage';
+import MeetingMinutesWritePage from '~/pages/MeetingMinutesWritePage/MeetingMinutesWritePage';
 import NotFoundPage from '~/pages/NotFoundPage/NotFoundPage';
 import ProjectHolder from '~/pages/ProjectHolder/ProjectHolder';
 import StartPage from '~/pages/StartPage/StartPage';
@@ -39,6 +40,14 @@ const AppRouter = () => {
               children: [
                 { path: ROUTES.PROJECT_HOLDER, element: <ProjectHolder /> },
                 { path: ROUTES.DASH_BOARD, element: <MeetingMinutesPage /> },
+                {
+                  path: ROUTES.MEETING_MINUTES,
+                  element: <MeetingMinutesPage />,
+                },
+                {
+                  path: ROUTES.MEETING_MINUTES_WRITE,
+                  element: <MeetingMinutesWritePage />,
+                },
               ],
             },
           ],

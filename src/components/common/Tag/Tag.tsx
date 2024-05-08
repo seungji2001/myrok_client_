@@ -13,9 +13,18 @@ export interface TagProps extends ComponentPropsWithRef<'span'> {
 }
 
 const Tag = (props: TagProps) => {
-  const { content, color = Theme.color.gray250, outLine = false } = props;
+  const {
+    content,
+    color = Theme.color.gray250,
+    outLine = false,
+    ...attribute
+  } = props;
 
-  return <span css={S.tagWrapper(color, outLine)}>{content}</span>;
+  return (
+    <span css={S.tagWrapper(color, outLine)} {...attribute}>
+      {content}
+    </span>
+  );
 };
 
 Tag.Check = CheckTag;

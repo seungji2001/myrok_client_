@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import Header from '~/components/common/Header/Header';
+import { Theme } from '~/styles/Theme';
 
 const pageContainer = css`
   position: absolute;
@@ -10,6 +11,8 @@ const pageContainer = css`
   bottom: 0;
 
   overflow: hidden;
+
+  background-color: ${Theme.color.gray50};
 `;
 
 const PageTemplate = () => {

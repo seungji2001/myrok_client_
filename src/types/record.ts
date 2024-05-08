@@ -6,3 +6,13 @@ export interface RecordInfo {
   recordDate: YYYYMMDD;
   recordWriterName: string;
 }
+
+export interface Record {
+  projectId: number;
+  recordName: string;
+  recordContent: string;
+  recordWriterId: number;
+  tagList: string[];
+  recordDate: YYYYMMDD;
+  memberList: number[];
+}

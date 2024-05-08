@@ -20,10 +20,11 @@ const DeleteTag = (
     color = Theme.color.gray250,
     outLine = false,
     handleTagDelete,
+    ...attribute
   } = props;
 
   return (
-    <span css={S.tagWrapper(color, outLine)} ref={ref}>
+    <span css={S.tagWrapper(color, outLine)} ref={ref} {...attribute}>
       {content}
 
       <Button
