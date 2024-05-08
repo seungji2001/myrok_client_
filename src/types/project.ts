@@ -8,3 +8,8 @@ export interface Period {
 export interface ProjectInfo extends Period {
   projectName: string;
 }
+
+export interface ProjectMemberNames {
+  memberId: number;
+  memberName: string;
+}

@@ -1,11 +1,12 @@
 import { rest } from 'msw';
 import { fakeProjectInfo } from '~/server/handlers/user';
-import { projectInviteCode } from '~/server/mocks/project';
+import { projectInviteCode, projectMemberNames } from '~/server/mocks/project';
 
 export const projectHandlers = () => {
   return [
     rest.post('/myrok/project', postCreateProject),
     rest.post('/myrok/project/participate', postJoinProject),
+    rest.get(`/myrok/project/:projectId/members`, getProjectMemberNames),
   ];
 };
 
@@ -69,5 +70,16 @@ const postJoinProject: Parameters<typeof rest.get>[1] = async (
     ctx.json({
       projectId: fakeProjectInfo.projectId,
     }),
+  );
+};
+
+const getProjectMemberNames: Parameters<typeof rest.get>[1] = async (
+  _,
+  res,
+  ctx,
+) => {
+  return res(
+    ctx.status(200),
+    ctx.json({ projectMemberNames: projectMemberNames }),
   );
 };

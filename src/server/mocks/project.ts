@@ -1,3 +1,10 @@
+export const projectMemberNames = [
+  { memberId: 1, memberName: '송지은' },
+  { memberId: 2, memberName: '이가연' },
+  { memberId: 3, memberName: '백승지' },
+  { memberId: 4, memberName: '김도연' },
+];
+
 export const projectInviteCode = [
   {
     projectId: 1000,
