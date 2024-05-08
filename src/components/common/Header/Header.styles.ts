@@ -68,11 +68,3 @@ export const projectNameText = (size: Extract<Size, 'sm' | 'md' | 'lg'>) => {
     ${style[size]}
   `;
 };
-
-export const profileImg = css`
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-  object-fit: cover;
-`;

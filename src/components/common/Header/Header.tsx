@@ -6,6 +6,7 @@ import { ROUTES } from '~/constants/routes';
 import { useProject } from '~/hooks/useProject';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
 import * as S from '~/components/common/Header/Header.styles';
+import UserInfoModal from '~/components/user/UserInfoModal/UserInfoModal';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -41,11 +42,7 @@ const Header = () => {
           초대코드
         </Button>
       </div>
-      <img
-        css={S.profileImg}
-        src={'https://avatars.githubusercontent.com/u/79538610?v=4'}
-        alt="프로필 사진"
-      />
+      <UserInfoModal />
     </header>
   );
 };

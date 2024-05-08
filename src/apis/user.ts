@@ -1,7 +1,7 @@
 import { axiosInstance } from '~/apis/axiosInstance';
 import { instance } from '~/apis/instance';
 import { LOCAL_STORAGE } from '~/constants/api';
-import type { UserProjectInfo } from '~/types/user';
+import type { UserInfo, UserProjectInfo } from '~/types/user';
 
 export const postGoogleLogin = async () => {
   const { data } = await instance.post<{ loginUrl: string }>(
@@ -21,8 +21,13 @@ export const postTokenReissue = async () => {
 };
 
 export const getUserProjectInfo = async () => {
-  const { data } =
-    await axiosInstance.get<UserProjectInfo>('/myrok/me/project');
+  const { data } = await instance.get<UserProjectInfo>('/myrok/me/project');
+
+  return data;
+};
+
+export const getUserInfo = async () => {
+  const { data } = await axiosInstance.get<UserInfo>('/myrok/me');
 
   return data;
 };

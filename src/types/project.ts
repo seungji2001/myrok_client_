@@ -1,3 +1,5 @@
+import type { UserInfo } from '~/types/user';
+
 export type YYYYMMDD = `${string}-${string}-${string}`;
 
 export interface Period {
@@ -9,7 +11,4 @@ export interface ProjectInfo extends Period {
   projectName: string;
 }
 
-export interface ProjectMemberNames {
-  memberId: number;
-  memberName: string;
-}
+export type ProjectMemberNames = Extract<UserInfo, 'memberId' | 'name'>;

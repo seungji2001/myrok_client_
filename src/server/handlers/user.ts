@@ -1,9 +1,11 @@
 import { rest } from 'msw';
+import { userInfo } from '~/server/mocks/user';
 
 export const userHandlers = () => {
   return [
     rest.post('/myrok/auth/google', postGoogleLogin),
     rest.get('/myrok/me/project', getUserProjectInfo),
+    rest.get('/myrok/me', getUserInfo),
   ];
 };
 
@@ -49,4 +51,8 @@ const getUserProjectInfo: Parameters<typeof rest.get>[1] = async (
   //   ctx.status(401),
   //   ctx.json({ statusCode: 40100, message: '응애잘못되었다', code: 'C001' }),
   // );
+};
+
+const getUserInfo: Parameters<typeof rest.get>[1] = async (_, res, ctx) => {
+  return res(ctx.status(200), ctx.json(userInfo));
 };
