@@ -13,7 +13,7 @@ let lastRecordId = recordListData[0].recordId;
 
 export const recordHandler = () => {
   return [
-    rest.get('/myrok/list', getRecordList),
+    rest.get('/myrok/:projectId/list', getRecordList),
     rest.get('/myrok/records/:recordId', getRecord),
     rest.post('/myrok/records', postRecord),
     rest.get('/myrok/record/summary', getSummary),

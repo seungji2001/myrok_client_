@@ -18,16 +18,15 @@ const RecordTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortMethod, setSortMethod] = useState<'new' | 'old'>('new');
   const navigate = useNavigate();
-  const { recordInfoList } = useGetRecordList();
+  const { recordInfoList, isFetched } = useGetRecordList();
 
   useEffect(() => {
-    setTotalPage(Math.ceil(recordList.length / 8));
-    setCurrentPage(1);
-  }, [recordList]);
-
-  useEffect(() => {
-    setRecordList(recordInfoList);
-  }, [recordInfoList]);
+    if (isFetched) {
+      setRecordList(recordInfoList);
+      setTotalPage(Math.ceil(recordInfoList.length / 8));
+      setCurrentPage(1);
+    }
+  }, [recordInfoList, isFetched]);
 
   const handlePageChange = (pageNum: number) => {
     setCurrentPage(pageNum);
