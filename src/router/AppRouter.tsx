@@ -9,6 +9,7 @@ import DashBoardPage from '~/pages/DashBoardPage/DashBoardPage';
 import JoinPage from '~/pages/JoinPage/JoinPage';
 import LandingPage from '~/pages/LandingPage/LandingPage';
 import LoginPage from '~/pages/LoginPage/LoginPage';
+import MeetingMinutesEditPage from '~/pages/MeetingMinutesEditPage/MeetingMinutesEditPage';
 import MeetingMinutesPage from '~/pages/MeetingMinutesPage/MeetingMinutesPage';
 import MeetingMinutesRecordPage from '~/pages/MeetingMinutesRecordPage/MeetingMinutesRecordPage';
 import MeetingMinutesWritePage from '~/pages/MeetingMinutesWritePage/MeetingMinutesWritePage';
@@ -52,6 +53,10 @@ const AppRouter = () => {
                 {
                   path: ROUTES.MEETING_MINUTES_RECORD,
                   element: <MeetingMinutesRecordPage />,
+                },
+                {
+                  path: ROUTES.MEETING_MINUTES_EDIT,
+                  element: <MeetingMinutesEditPage />,
                 },
               ],
             },

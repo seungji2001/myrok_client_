@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Tag from '~/components/common/Tag/Tag';
 import Text from '~/components/common/Text/Text';
 import { useGetRecord } from '~/hooks/@query/useGetRecord';
@@ -7,12 +7,15 @@ import { Theme } from '~/styles/Theme';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
 import * as S from '~/pages/MeetingMinutesRecordPage/MeetingMinutesRecordPage.styles';
 import SummaryBox from '~/components/meeting_minutes/SummaryBox/SummaryBox';
+import Button from '~/components/common/Button/Button';
+import { useGetUserInfo } from '~/hooks/@query/useGetUserInfo';
 
 const MeetingMinutesRecordPage = () => {
   const recordId = useParams().recordId;
   if (recordId === undefined || isNaN(Number(recordId))) {
     return <NotFoundPage />;
   }
+  const navigate = useNavigate();
 
   const {
     recordContent,
@@ -22,6 +25,7 @@ const MeetingMinutesRecordPage = () => {
     memberList,
     recordDate,
   } = useGetRecord(Number(recordId));
+  const { memberId } = useGetUserInfo();
 
   const recordWriterName = memberList.find(
     (member) => member.memberId === recordWriterId,
@@ -98,6 +102,18 @@ const MeetingMinutesRecordPage = () => {
             })}
           </div>
         </div>
+        {recordWriterId === memberId && (
+          <div css={S.writerButton}>
+            <Button
+              css={S.buttonStyling}
+              variant="primary"
+              onClick={() => navigate(`/meeting-minutes/${recordId}/edit`)}
+            >
+              수정하기
+            </Button>
+            <Button css={S.deleteButtonStyling}>삭제하기</Button>
+          </div>
+        )}
       </div>
     </div>
   );

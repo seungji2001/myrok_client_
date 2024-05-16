@@ -99,3 +99,21 @@ export const infoContainer = css`
 
   height: 100%;
 `;
+
+export const writerButton = css`
+  display: flex;
+  justify-content: space-between;
+  min-width: 300px;
+  max-width: 460px;
+`;
+
+export const buttonStyling = css`
+  font-weight: 900;
+  width: 45%;
+`;
+
+export const deleteButtonStyling = css`
+  font-weight: 900;
+  width: 45%;
+  border: 1px solid ${Theme.color.gray250};
+`;

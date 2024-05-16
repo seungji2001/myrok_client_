@@ -4,6 +4,7 @@ export const summaryBoxContainer = css`
   display: flex;
   width: calc(100% - 20px);
   padding: 10px;
+  margin-bottom: 20px;
   gap: 10px;
 
   background-color: #fff5d7;

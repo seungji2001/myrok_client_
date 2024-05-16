@@ -17,6 +17,7 @@ export const recordHandler = () => {
     rest.get('/myrok/records/:recordId', getRecord),
     rest.post('/myrok/records', postRecord),
     rest.get('/myrok/record/summary', getSummary),
+    rest.patch('/myrok/records/:recordId', patchRecord),
   ];
 };
 
@@ -94,6 +95,27 @@ const postRecord: Parameters<typeof rest.post>[1] = async (req, res, ctx) => {
     ctx.status(200),
     ctx.json({
       recordId: lastRecordId,
+    }),
+  );
+};
+
+const patchRecord: Parameters<typeof rest.patch>[1] = async (req, res, ctx) => {
+  const { recordId } = req.params;
+  const { recordName, tagList } = await req.json();
+
+  const recordIndex = record.findIndex(
+    (data) => data.recordId === Number(recordId),
+  );
+
+  if (recordIndex === undefined) return res(ctx.status(404));
+
+  record[recordIndex].recordName = recordName;
+  record[recordIndex].tagList = tagList;
+
+  return res(
+    ctx.status(200),
+    ctx.json({
+      recordId: record[recordIndex].recordId,
     }),
   );
 };

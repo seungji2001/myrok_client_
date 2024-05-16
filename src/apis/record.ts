@@ -13,6 +13,16 @@ export const postRecord = (data: Record) => {
   return axiosInstance.post<{ recordId: number }>('/myrok/records', data);
 };
 
+export const patchRecord = (
+  recordId: number,
+  data: Pick<Record, 'recordWriterId' | 'recordName' | 'tagList'>,
+) => {
+  return axiosInstance.patch<{ recordId: number }>(
+    `/myrok/records/${recordId}`,
+    data,
+  );
+};
+
 export const getRecord = async (recordId: number) => {
   const { data } = await axiosInstance.get<RecordDetail>(
     `/myrok/records/${recordId}`,
