@@ -20,6 +20,12 @@ export const useResetError = () => {
         return;
       }
 
+      if (error.statusCode === HTTP_STATUS_CODE.NOT_ACCEPTABLE) {
+        navigate(ROUTES.DASH_BOARD);
+
+        return;
+      }
+
       if (error.statusCode >= HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR) {
         navigate(ROUTES.RELOAD);
       } else {

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Tag from '~/components/common/Tag/Tag';
 import Text from '~/components/common/Text/Text';
 import { useGetRecord } from '~/hooks/@query/useGetRecord';
@@ -11,6 +11,8 @@ import { useState } from 'react';
 import RecordEditInfoBox from '~/components/meeting_minutes/RecordEditInfoBox/RecordEditInfoBox';
 import { usePatchRecord } from '~/hooks/@query/usePatchRecord';
 import { useToast } from '~/components/common/Toast/useToast';
+import { HTTP_STATUS_CODE } from '~/constants/api';
+import { HTTPError } from '~/apis/HTTPError';
 
 const MeetingMinutesEditPage = () => {
   const recordId = useParams().recordId;
@@ -20,6 +22,10 @@ const MeetingMinutesEditPage = () => {
   const { recordContent, recordName, tagList, recordWriterId, memberList } =
     useGetRecord(Number(recordId));
   const { memberId } = useGetUserInfo();
+
+  if (memberId !== 0 && recordWriterId !== 0 && memberId !== recordWriterId) {
+    throw new HTTPError(HTTP_STATUS_CODE.NOT_ACCEPTABLE);
+  }
   const [newTagList, setNewTagList] = useState<string[]>([...tagList]);
   const [newRecordName, setNewRecordName] = useState(recordName);
   const { showToast } = useToast();

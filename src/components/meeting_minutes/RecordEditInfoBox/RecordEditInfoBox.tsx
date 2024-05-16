@@ -27,7 +27,6 @@ const RecordEditInfoBox = (props: RecordEditInfoBoxProps) => {
 
   useEffect(() => {
     titleRef.current?.focus();
-    console.log('1' + props.recordName);
   }, []);
 
   const handleNextInput: KeyboardEventHandler<HTMLInputElement> = (e) => {
