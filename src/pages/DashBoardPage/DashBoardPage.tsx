@@ -84,7 +84,7 @@ const DashBoardPage = () => {
               />
             );
           })}
-          {chartData.length === 0 && (
+          {etcPercentage === 100 && (
             <Text weight="semiBold" size="lg">
               회의록 작성시 태그를 입력해보세요!
             </Text>
