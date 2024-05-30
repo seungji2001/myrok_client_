@@ -16,6 +16,7 @@ const PieChart = (props: PieChartProps) => {
       width={radius * 2}
       height={radius * 2}
       viewBox={`0 0 ${radius * 2} ${radius * 2}`}
+      transform="scale(-1, 1)"
     >
       <g
         fill="transparent"

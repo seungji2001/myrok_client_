@@ -1,5 +1,27 @@
 import type { RecordDetail, RecordInfo, Summary } from '~/types/record';
 
+export const tags = new Map([
+  ['일정추산', 8],
+  ['기획', 7],
+  ['제안', 7],
+  ['진행상황', 6],
+  ['아이디어', 5],
+  ['피드백', 4],
+  ['서비스', 3],
+  ['18일차', 1],
+  ['작성자', 1],
+  ['프론트', 2],
+  ['백엔드', 2],
+  ['작업물', 2],
+  ['고도화', 2],
+  ['와이어프레임', 2],
+  ['개발범위', 2],
+  ['개요', 2],
+  ['역할분담', 2],
+  ['서류', 2],
+  ['디자인', 2],
+]);
+
 export const summary: Summary[] = [
   {
     summaryId: 1,
@@ -404,7 +426,7 @@ export const recordList: RecordInfo[] = [
   {
     recordId: 8,
     recordName: '분업 및 진행상황 공유',
-    recordDate: '2025-04-16',
+    recordDate: '2024-04-16',
     recordWriterName: '김도연',
   },
   {

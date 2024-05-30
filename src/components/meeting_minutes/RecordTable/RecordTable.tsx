@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '~/components/common/Button/Button';
 import Pagination from '~/components/common/Pagination/Pagination';
 import Text from '~/components/common/Text/Text';
 import EmptyRecordPlaceholder from '~/components/meeting_minutes/EmptyRecordPlaceholder/EmptyRecordPlaceholder';
 import * as S from '~/components/meeting_minutes/RecordTable/RecordTable.styles';
-import { ROUTES } from '~/constants/routes';
+import RecordTableHeader from '~/components/meeting_minutes/RecordTableHeader/RecordTableHeader';
+import { TABLE_HEADER_VALUES } from '~/constants/project';
 import { useGetRecordList } from '~/hooks/@query/useGetRecordList';
 import type { RecordInfo } from '~/types/record';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
-
-const tableHeaderValues = ['회의록', '작성일', '작성자'] as const;
 
 const RecordTable = () => {
   const [recordList, setRecordList] = useState<RecordInfo[]>([]);
@@ -32,55 +30,30 @@ const RecordTable = () => {
     setCurrentPage(pageNum);
   };
 
+  const handleListNewSort = () => {
+    setSortMethod('new');
+    setRecordList(recordInfoList);
+  };
+  const handleListOldSort = () => {
+    setSortMethod('old');
+    setRecordList([...recordInfoList].reverse());
+  };
+
   return (
     <>
       <div css={S.container}>
-        <div css={S.menuHeader}>
-          <Text css={S.recordTableTitle} weight="bold">
-            회의록
-          </Text>
-          <Button
-            css={S.recordAddButton}
-            aria-label="새로운 회의록 작성하기"
-            variant="primary"
-            size="lg"
-            onClick={() => navigate(ROUTES.MEETING_MINUTES_WRITE)}
-          >
-            회의록 작성
-          </Button>
-        </div>
-        <div css={S.sortMenuContainer}>
-          <Button
-            css={{ fontWeight: sortMethod === 'new' ? 900 : 400 }}
-            variant="plain"
-            value="new"
-            onClick={() => {
-              setSortMethod('new');
-              setRecordList(recordInfoList);
-            }}
-          >
-            최신 순
-          </Button>
-          <div css={S.divider} />
-          <Button
-            css={{ fontWeight: sortMethod === 'old' ? 900 : 400 }}
-            variant="plain"
-            value="old"
-            onClick={() => {
-              setSortMethod('old');
-              setRecordList([...recordInfoList].reverse());
-            }}
-          >
-            오래된 순
-          </Button>
-        </div>
+        <RecordTableHeader
+          sortMethod={sortMethod}
+          handleListNewSort={handleListNewSort}
+          handleListOldSort={handleListOldSort}
+        />
         <div css={S.tableContainer}>
           {recordList.length > 0 ? (
             <div css={S.tableBody}>
               <table css={[S.table, S.tableProperties]}>
                 <thead css={S.tableHeader}>
                   <tr>
-                    {tableHeaderValues.map((value) => (
+                    {TABLE_HEADER_VALUES.map((value) => (
                       <th key={value}>
                         <Text weight="semiBold" size="xl">
                           {value}

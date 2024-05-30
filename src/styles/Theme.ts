@@ -31,8 +31,7 @@ const piePreset = [
   '#4b9bf8',
   '#32c75b',
   '#ffdC5e',
-  '#ffe49e',
-  '#dbd9d9',
+  '#eaeaea',
 ] as const;
 
 const zIndex = {

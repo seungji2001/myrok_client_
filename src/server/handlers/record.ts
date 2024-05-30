@@ -4,12 +4,14 @@ import {
   recordList as recordListData,
   record as recordData,
   summary as summaryData,
+  tags as tagsData,
 } from '~/server/mocks/record';
 
 let recordList = [...recordListData];
 let record = [...recordData];
 let summaryList = [...summaryData];
 let lastRecordId = recordListData[0].recordId;
+let tags = new Map([...tagsData]);
 
 export const recordHandler = () => {
   return [
@@ -18,6 +20,7 @@ export const recordHandler = () => {
     rest.post('/myrok/records', postRecord),
     rest.get('/myrok/record/summary', getSummary),
     rest.patch('/myrok/records/:recordId', patchRecord),
+    rest.get('/myrok/:projectId/dashboard', getDashBoardTags),
   ];
 };
 
@@ -91,6 +94,16 @@ const postRecord: Parameters<typeof rest.post>[1] = async (req, res, ctx) => {
     memberList: [...member],
   });
 
+  tagList.forEach((item: string) => {
+    const count = tags.get(item);
+
+    if (tags.has(item) && count !== undefined) {
+      tags.set(item, count + 1);
+    } else {
+      tags.set(item, 1);
+    }
+  });
+
   return res(
     ctx.status(200),
     ctx.json({
@@ -118,4 +131,45 @@ const patchRecord: Parameters<typeof rest.patch>[1] = async (req, res, ctx) => {
       recordId: record[recordIndex].recordId,
     }),
   );
+};
+
+const getDashBoardTags: Parameters<typeof rest.get>[1] = async (
+  req,
+  res,
+  ctx,
+) => {
+  const sortedKeys = Array.from(tags.keys()).sort((a, b) => {
+    const getA = tags.get(a);
+    const getB = tags.get(b);
+    if (getA !== undefined && getB !== undefined) return getB - getA;
+
+    return 0;
+  });
+
+  // 상위 4개의 키 선택
+  const top4Keys = sortedKeys.slice(0, 4);
+
+  const top4Entries = {
+    tags: [
+      {
+        tagName: top4Keys[0],
+        percentage: 40,
+      },
+      {
+        tagName: top4Keys[1],
+        percentage: 30,
+      },
+      {
+        tagName: top4Keys[2],
+        percentage: 15,
+      },
+      {
+        tagName: top4Keys[3],
+        percentage: 5,
+      },
+    ],
+    etcPercentage: 10,
+  };
+
+  return res(ctx.status(200), ctx.json({ ...top4Entries }));
 };

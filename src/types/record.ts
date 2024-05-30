@@ -27,3 +27,8 @@ export interface Summary {
   summaryId: number;
   summary: string;
 }
+
+export interface DashBoardTag {
+  tagName: string;
+  percentage: number;
+}

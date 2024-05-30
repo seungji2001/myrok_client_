@@ -1,5 +1,11 @@
 import { axiosInstance } from '~/apis/axiosInstance';
-import type { Record, RecordDetail, RecordInfo, Summary } from '~/types/record';
+import type {
+  Record,
+  RecordDetail,
+  RecordInfo,
+  Summary,
+  DashBoardTag,
+} from '~/types/record';
 
 export const getRecordList = async (projectId: number) => {
   const { data } = await axiosInstance.get<RecordInfo[]>(
@@ -35,6 +41,15 @@ export const getSummary = async (recordId: number) => {
   const { data } = await axiosInstance.get<Summary>(
     `/myrok/record/summary?recordId=${recordId}`,
   );
+
+  return data;
+};
+
+export const getDashBoardTags = async (projectId: number) => {
+  const { data } = await axiosInstance.get<{
+    tags: DashBoardTag[];
+    etcPercentage: number;
+  }>(`/myrok/${projectId}/dashboard`);
 
   return data;
 };

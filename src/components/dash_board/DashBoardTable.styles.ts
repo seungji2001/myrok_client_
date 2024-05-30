@@ -1,15 +1,6 @@
 import { css } from '@emotion/react';
 import { Theme } from '~/styles/Theme';
 
-export const container = css`
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-
-  width: 100%;
-  max-height: 650px;
-`;
-
 export const tableContainer = css`
   display: flex;
   flex-direction: column;
@@ -41,7 +32,7 @@ export const table = css`
 `;
 
 export const tableProperties = css`
-  font-size: 18px;
+  font-size: 18px 20px;
 
   table-layout: fixed;
 
@@ -82,4 +73,12 @@ export const tableProperties = css`
   thead > tr > th {
     text-align: center;
   }
+`;
+
+export const recordListButton = css`
+  padding: 18px;
+  align-self: end;
+  font-weight: 800;
+  font-size: 20px;
+  border-radius: 14px;
 `;

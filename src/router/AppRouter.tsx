@@ -41,7 +41,7 @@ const AppRouter = () => {
               element: <PageTemplate />,
               children: [
                 { path: ROUTES.PROJECT_HOLDER, element: <ProjectHolder /> },
-                { path: ROUTES.DASH_BOARD, element: <MeetingMinutesPage /> },
+                { path: ROUTES.DASH_BOARD, element: <DashBoardPage /> },
                 {
                   path: ROUTES.MEETING_MINUTES,
                   element: <MeetingMinutesPage />,

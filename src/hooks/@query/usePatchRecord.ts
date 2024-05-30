@@ -16,7 +16,7 @@ export const usePatchRecord = (recordId: number) => {
       const { recordId } = response.data;
 
       queryClient.invalidateQueries({
-        queryKey: [recordId, 'record'],
+        queryKey: [recordId, 'record', 'dashBoardTags'],
       });
 
       navigate(`${ROUTES.MEETING_MINUTES}/${recordId}`);

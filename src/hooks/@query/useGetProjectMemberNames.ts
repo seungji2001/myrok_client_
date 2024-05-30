@@ -7,7 +7,7 @@ export const useGetProjectMemberNames = () => {
   const { projectId } = useProject();
 
   const { data } = useQuery({
-    queryKey: ['projectMemberNames'],
+    queryKey: [projectId, 'projectMemberNames'],
     queryFn: () => getProjectMemberNames(projectId),
   });
 
