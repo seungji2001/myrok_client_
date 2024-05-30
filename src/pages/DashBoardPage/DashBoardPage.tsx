@@ -1,43 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { useNavigate } from 'react-router-dom';
 import PieChart from '~/components/common/PieChart/PieChart';
 import Tag from '~/components/common/Tag/Tag';
 import Text from '~/components/common/Text/Text';
 import DashBoardTable from '~/components/dash_board/DashBoardTable';
+import { ROUTES } from '~/constants/routes';
 import { useGetDashBoardTags } from '~/hooks/@query/useGetDashBoardTags';
 import { Theme } from '~/styles/Theme';
 import { arrayOf } from '~/utils/arrayOf';
 import { generateDarkenHex } from '~/utils/generateDarkenHex';
-
-const dashBoardPageContainer = css`
-  display: flex;
-  justify-content: space-between;
-  padding: 30px;
-  height: calc(100% - 160px);
-  gap: 100px;
-`;
-
-const pieChartContainer = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-`;
-
-const tagsGrid = css`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-
-  max-width: 400px;
-  max-height: 84px;
-  overflow-y: auto;
-`;
+import * as S from '~/pages/DashBoardPage/DashBoardPage.styles';
 
 const DashBoardPage = () => {
   const { tags, etcPercentage } = useGetDashBoardTags();
+  const navigate = useNavigate();
 
   const chartData = arrayOf(
     etcPercentage === 0 ? tags.length : tags.length + 1,
@@ -55,10 +31,10 @@ const DashBoardPage = () => {
   });
 
   return (
-    <div css={dashBoardPageContainer}>
-      <div css={pieChartContainer}>
+    <div css={S.dashBoardPageContainer}>
+      <div css={S.pieChartContainer}>
         <PieChart radius={240} data={chartData} />
-        <div css={tagsGrid}>
+        <div css={S.tagsGrid}>
           {chartData.map((data, i) => {
             const color = generateDarkenHex(Theme.piePreset[i], 30);
 
@@ -79,7 +55,12 @@ const DashBoardPage = () => {
                 outLine={true}
                 content={`${data.label} (${data.percentage}%)`}
                 handleTagCheck={() => {
-                  alert('click!');
+                  const isMoving = confirm(
+                    `"${data.label}" 태그가 입력된 회의록을 보시겠습니까?`,
+                  );
+
+                  if (isMoving)
+                    navigate(`${ROUTES.MEETING_MINUTES}?tagName=${data.label}`);
                 }}
               />
             );

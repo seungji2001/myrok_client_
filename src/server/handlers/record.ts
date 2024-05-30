@@ -21,6 +21,7 @@ export const recordHandler = () => {
     rest.get('/myrok/record/summary', getSummary),
     rest.patch('/myrok/records/:recordId', patchRecord),
     rest.get('/myrok/:projectId/dashboard', getDashBoardTags),
+    rest.get('/myrok/:projectId/tagList', getRecordTagList),
   ];
 };
 
@@ -134,7 +135,7 @@ const patchRecord: Parameters<typeof rest.patch>[1] = async (req, res, ctx) => {
 };
 
 const getDashBoardTags: Parameters<typeof rest.get>[1] = async (
-  req,
+  _,
   res,
   ctx,
 ) => {
@@ -146,7 +147,6 @@ const getDashBoardTags: Parameters<typeof rest.get>[1] = async (
     return 0;
   });
 
-  // 상위 4개의 키 선택
   const top4Keys = sortedKeys.slice(0, 4);
 
   const top4Entries = {
@@ -172,4 +172,20 @@ const getDashBoardTags: Parameters<typeof rest.get>[1] = async (
   };
 
   return res(ctx.status(200), ctx.json({ ...top4Entries }));
+};
+
+const getRecordTagList: Parameters<typeof rest.get>[1] = async (
+  _,
+  res,
+  ctx,
+) => {
+  const tagList = Array.from(tags, ([tagName, count]) => ({ tagName, count }));
+  const totalCount = tagList.reduce((acc, curr) => {
+    return acc + curr.count;
+  }, 0);
+
+  return res(
+    ctx.status(200),
+    ctx.json({ totalCount: totalCount, tagList: [...tagList] }),
+  );
 };

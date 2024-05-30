@@ -14,7 +14,7 @@ const RecordTableHeader = (props: RecordTableHeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div css={S.recordTableHeaderContainer}>
       <div css={S.menuHeader}>
         <Text css={S.recordTableTitle} weight="bold">
           회의록
@@ -48,7 +48,7 @@ const RecordTableHeader = (props: RecordTableHeaderProps) => {
           오래된 순
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

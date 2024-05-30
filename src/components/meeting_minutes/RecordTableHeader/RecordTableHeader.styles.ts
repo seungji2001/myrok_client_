@@ -1,6 +1,12 @@
 import { css } from '@emotion/react';
 import { Theme } from '~/styles/Theme';
 
+export const recordTableHeaderContainer = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export const menuHeader = css`
   display: flex;
   justify-content: space-between;
@@ -23,7 +29,7 @@ export const recordAddButton = css`
 
 export const sortMenuContainer = css`
   display: flex;
-  align-self: flex-end;
+  align-self: end;
   gap: 10px;
 `;
 

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getDashBoardTags } from '~/apis/record';
 import { useProject } from '~/hooks/useProject';
-import { DashBoardTag } from '~/types/record';
+import type { DashBoardTag } from '~/types/record';
 
 export const useGetDashBoardTags = () => {
   const { projectId } = useProject();

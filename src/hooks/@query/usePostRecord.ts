@@ -11,7 +11,7 @@ export const usePostRecord = () => {
     mutationFn: postRecord,
     onSuccess: (response) => {
       queryClient.invalidateQueries({
-        queryKey: ['recordList', 'dashBoardTags'],
+        queryKey: ['recordList', 'dashBoardTags', 'recordTagList'],
       });
       const { recordId } = response.data;
 

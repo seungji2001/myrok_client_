@@ -32,3 +32,8 @@ export interface DashBoardTag {
   tagName: string;
   percentage: number;
 }
+
+export interface RecordTag {
+  tagName: string;
+  count: number;
+}

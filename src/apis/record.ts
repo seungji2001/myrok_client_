@@ -5,6 +5,7 @@ import type {
   RecordInfo,
   Summary,
   DashBoardTag,
+  RecordTag,
 } from '~/types/record';
 
 export const getRecordList = async (projectId: number) => {
@@ -50,6 +51,15 @@ export const getDashBoardTags = async (projectId: number) => {
     tags: DashBoardTag[];
     etcPercentage: number;
   }>(`/myrok/${projectId}/dashboard`);
+
+  return data;
+};
+
+export const getRecordTagList = async (projectId: number) => {
+  const { data } = await axiosInstance.get<{
+    tagList: RecordTag[];
+    totalCount: number;
+  }>(`/myrok/${projectId}/tagList`);
 
   return data;
 };
