@@ -26,6 +26,15 @@ const presetColors = [
   '#219d7b',
 ] as const;
 
+const piePreset = [
+  '#eb595a',
+  '#4b9bf8',
+  '#32c75b',
+  '#ffdC5e',
+  '#ffe49e',
+  '#dbd9d9',
+] as const;
+
 const zIndex = {
   header: 1,
   backdrop: 1,
@@ -33,4 +42,4 @@ const zIndex = {
   toast: 4,
 } as const;
 
-export const Theme = { color, presetColors, zIndex };
+export const Theme = { color, presetColors, piePreset, zIndex };

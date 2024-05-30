@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Tag from '~/components/common/Tag/Tag';
 import Text from '~/components/common/Text/Text';
 import { useGetRecord } from '~/hooks/@query/useGetRecord';

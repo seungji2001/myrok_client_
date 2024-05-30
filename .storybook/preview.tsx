@@ -10,7 +10,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { ToastProvider } from '../src/components/common/Toast/ToastContext';
 import { ROUTES } from '../src/constants/routes';
 import '../src/App.css';
-import { ProjectProvider } from '../src/context/ProjectContext';
 
 initialize();
 
