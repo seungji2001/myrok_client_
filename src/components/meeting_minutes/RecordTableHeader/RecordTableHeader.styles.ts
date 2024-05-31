@@ -17,14 +17,21 @@ export const menuHeader = css`
   padding: 8px;
 `;
 
-export const recordTableTitle = css`
-  font-size: 28px;
+export const recordSearchInput = css`
+  border-radius: 10px;
+  font-size: 18px;
 `;
 
 export const recordAddButton = css`
   font-weight: 800;
 
   border-radius: 14px;
+`;
+
+export const recordSearchButton = css`
+  margin-left: 10px;
+  font-weight: 800;
+  border-radius: 8px;
 `;
 
 export const sortMenuContainer = css`

@@ -6,6 +6,7 @@ import {
   summary as summaryData,
   tags as tagsData,
 } from '~/server/mocks/record';
+import type { RecordDetail, RecordInfo } from '~/types/record';
 
 let recordList = [...recordListData];
 let record = [...recordData];
@@ -50,8 +51,47 @@ const getRecord: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
   return res(ctx.status(200), ctx.json({ ...recordDetail }));
 };
 
-const getRecordList: Parameters<typeof rest.get>[1] = async (_, res, ctx) => {
-  return res(ctx.status(200), ctx.json(recordList));
+const getMatchingAObjects = (
+  recordDetailList: RecordDetail[],
+  recordList: RecordInfo[],
+) => {
+  const matchingAObjects = recordList.filter((i) =>
+    recordDetailList.some((d) => d.recordId === i.recordId),
+  );
+
+  return matchingAObjects;
+};
+
+const getRecordList: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  const tagName = req.url.searchParams.get('tagName');
+  const recordName = req.url.searchParams.get('recordName');
+
+  if (tagName === null && recordName === null)
+    return res(ctx.status(200), ctx.json(recordList));
+
+  const tagNameList = record.filter((data) => {
+    return data.tagList.some((tag) => tag === tagName);
+  });
+
+  const recordNameList = record.filter((data) => {
+    if (recordName === null) return false;
+    return data.recordName.includes(recordName);
+  });
+
+  const tagInfoList = getMatchingAObjects(tagNameList, recordList);
+  const recordInfoList = getMatchingAObjects(recordNameList, recordList);
+
+  if (tagName !== null && recordName === null)
+    return res(ctx.status(200), ctx.json(tagInfoList));
+
+  if (tagName === null && recordName !== null)
+    return res(ctx.status(200), ctx.json(recordInfoList));
+
+  const searchList = tagInfoList.filter((data1) =>
+    recordInfoList.some((data2) => data2.recordId === data1.recordId),
+  );
+
+  return res(ctx.status(200), ctx.json(searchList));
 };
 
 const postRecord: Parameters<typeof rest.post>[1] = async (req, res, ctx) => {

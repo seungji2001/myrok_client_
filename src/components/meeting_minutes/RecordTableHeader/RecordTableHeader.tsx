@@ -1,24 +1,55 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '~/components/common/Button/Button';
-import Text from '~/components/common/Text/Text';
 import { ROUTES } from '~/constants/routes';
 import * as S from '~/components/meeting_minutes/RecordTableHeader/RecordTableHeader.styles';
+import Input from '~/components/common/Input/Input';
+import { ChangeEvent, useRef } from 'react';
 
 interface RecordTableHeaderProps {
   sortMethod: 'new' | 'old';
+  searchRecord: string;
+  handleRecordSearch: (e: ChangeEvent<HTMLInputElement>) => void;
   handleListNewSort: () => void;
   handleListOldSort: () => void;
+  handleRecordSearchClick: () => void;
 }
 const RecordTableHeader = (props: RecordTableHeaderProps) => {
-  const { sortMethod, handleListNewSort, handleListOldSort } = props;
+  const {
+    sortMethod,
+    searchRecord,
+    handleRecordSearch,
+    handleListNewSort,
+    handleListOldSort,
+    handleRecordSearchClick,
+  } = props;
   const navigate = useNavigate();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div css={S.recordTableHeaderContainer}>
       <div css={S.menuHeader}>
-        <Text css={S.recordTableTitle} weight="bold">
-          회의록
-        </Text>
+        <div>
+          <Input
+            width="300px"
+            height="30px"
+            placeholder="검색어를 입력해주세요."
+            value={searchRecord}
+            onChange={handleRecordSearch}
+            css={S.recordSearchInput}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') buttonRef.current?.click();
+            }}
+          />
+          <Button
+            css={S.recordSearchButton}
+            aria-label="회의록 검색"
+            variant="primary"
+            onClick={handleRecordSearchClick}
+            ref={buttonRef}
+          >
+            검색
+          </Button>
+        </div>
         <Button
           css={S.recordAddButton}
           aria-label="새로운 회의록 작성하기"

@@ -5,12 +5,12 @@ import * as S from '~/components/meeting_minutes/TagListMenu/TagListMenu.styles'
 interface TagListMenuProps {
   totalCount: number;
   tagList: RecordTag[];
-  clickedTag: string;
+  searchTag: string;
   handleTagClick: (tag: string) => void;
 }
 
 const TagListMenu = (props: TagListMenuProps) => {
-  const { totalCount, tagList, clickedTag, handleTagClick } = props;
+  const { totalCount, tagList, searchTag, handleTagClick } = props;
 
   return (
     <div css={S.tagListMenuContainer}>
@@ -18,7 +18,7 @@ const TagListMenu = (props: TagListMenuProps) => {
         태그 목록 ({totalCount})
       </Text>
       <Text
-        css={[clickedTag === '전체보기' && S.clickedText, S.cursorPoint]}
+        css={[searchTag === '전체보기' && S.clickedText, S.cursorPoint]}
         onClick={() => handleTagClick('전체보기')}
       >
         전체보기 ({totalCount})
@@ -27,7 +27,7 @@ const TagListMenu = (props: TagListMenuProps) => {
         return (
           <Text
             key={tag.tagName}
-            css={[clickedTag === tag.tagName && S.clickedText, S.cursorPoint]}
+            css={[searchTag === tag.tagName && S.clickedText, S.cursorPoint]}
             onClick={() => handleTagClick(tag.tagName)}
           >
             {tag.tagName} ({tag.count})

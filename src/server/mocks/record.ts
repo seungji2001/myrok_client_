@@ -239,7 +239,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 11,
-    recordName: '1서비스 초안 기획',
+    recordName: '서비스 기획 방향 회의',
     recordDate: '2025-03-11',
     recordWriterId: 1,
     recordContent:
@@ -254,7 +254,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 12,
-    recordName: '1서비스 세부 기획 & 수행계획서 일부 작성',
+    recordName: '서비스 기획 방향 회의 + 제출 서류 작성 업무 분담',
     recordDate: '2025-03-13',
     recordWriterId: 2,
     recordContent:
@@ -269,7 +269,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 13,
-    recordName: '1수행계획서 작성',
+    recordName: '제출서류 작성완료 회의',
     recordDate: '2025-03-14',
     recordWriterId: 4,
     recordContent:
@@ -291,7 +291,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 14,
-    recordName: '1수행계획서 작성2 mvc 구조 & 일정 정리',
+    recordName: '수행계획서 제출용 mvc 구조 & 일정 정리',
     recordDate: '2025-03-17',
     recordWriterId: 3,
     recordContent:
@@ -304,7 +304,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 15,
-    recordName: '1화면 설계 피드백 및 기능 역할 분담',
+    recordName: '화면 디자인 피드백',
     recordDate: '2025-03-18',
     recordWriterId: 1,
     recordContent:
@@ -319,7 +319,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 16,
-    recordName: '1진행상황 공유 & 상호 피드백',
+    recordName: '이번주 진도 확인 + 상호 피드백 공유',
     recordDate: '2025-04-04',
     recordWriterId: 2,
     recordContent:
@@ -333,7 +333,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 17,
-    recordName: '1진행상황 공유',
+    recordName: '업무 분담 + 새로운 제안 회의',
     recordDate: '2025-04-11',
     recordWriterId: 3,
     recordContent:
@@ -348,7 +348,7 @@ export const record: RecordDetail[] = [
   },
   {
     recordId: 18,
-    recordName: '1분업 및 진행상황 공유',
+    recordName: '일정 분배 + 업무 상세화',
     recordDate: '2025-04-16',
     recordWriterId: 4,
     recordContent:
@@ -377,49 +377,49 @@ export const record: RecordDetail[] = [
 export const recordList: RecordInfo[] = [
   {
     recordId: 18,
-    recordName: '1분업 및 진행상황 공유',
+    recordName: '일정 분배 + 업무 상세화',
     recordDate: '2025-04-16',
     recordWriterName: '김도연',
   },
   {
     recordId: 17,
-    recordName: '1진행상황 공유',
+    recordName: '업무 분담 + 새로운 제안 회의',
     recordDate: '2025-04-11',
     recordWriterName: '백승지',
   },
   {
     recordId: 16,
-    recordName: '1진행상황 공유 & 상호 피드백',
+    recordName: '이번주 진도 확인 + 상호 피드백 공유',
     recordDate: '2025-04-04',
     recordWriterName: '이가연',
   },
   {
     recordId: 15,
-    recordName: '1화면 설계 피드백 및 기능 역할 분담',
+    recordName: '화면 디자인 피드백',
     recordDate: '2025-03-18',
     recordWriterName: '송지은',
   },
   {
     recordId: 14,
-    recordName: '1수행계획서 작성2 mvc 구조 & 일정 정리',
+    recordName: '수행계획서 제출용 mvc 구조 & 일정 정리',
     recordDate: '2025-03-17',
     recordWriterName: '백승지',
   },
   {
     recordId: 13,
-    recordName: '1수행계획서 작성',
+    recordName: '제출서류 작성완료 회의',
     recordDate: '2025-03-14',
     recordWriterName: '김도연',
   },
   {
     recordId: 12,
-    recordName: '1서비스 세부 기획 & 수행계획서 일부 작성',
+    recordName: '서비스 기획 방향 회의 + 제출 서류 작성 업무 분담',
     recordDate: '2025-03-13',
     recordWriterName: '이가연',
   },
   {
     recordId: 11,
-    recordName: '1서비스 초안 기획',
+    recordName: '서비스 기획 방향 회의',
     recordDate: '2025-03-11',
     recordWriterName: '송지은',
   },

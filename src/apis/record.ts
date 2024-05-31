@@ -8,9 +8,20 @@ import type {
   RecordTag,
 } from '~/types/record';
 
-export const getRecordList = async (projectId: number) => {
+export const getRecordList = async (
+  projectId: number,
+  tagName: string,
+  recordName: string,
+) => {
+  let url = '';
+
+  if (tagName.length !== 0 && recordName.length !== 0)
+    url = `?tagName=${tagName}&recordName=${recordName}`;
+  else if (tagName.length !== 0) url = `?tagName=${tagName}`;
+  else if (recordName.length !== 0) url = `?recordName=${recordName}`;
+
   const { data } = await axiosInstance.get<RecordInfo[]>(
-    `/myrok/${projectId}/list`,
+    `/myrok/${projectId}/list${url}`,
   );
 
   return data;

@@ -9,7 +9,7 @@ import Button from '~/components/common/Button/Button';
 import { ROUTES } from '~/constants/routes';
 
 const DashBoardTable = () => {
-  const { recordInfoList } = useGetRecordList();
+  const { recordInfoList } = useGetRecordList('', '');
   const navigate = useNavigate();
 
   return (
