@@ -16,3 +16,11 @@ export const getProjectMemberNames = async (projectId: number) => {
 
   return data;
 };
+
+export const getInviteCode = async (projectId: number) => {
+  const { data } = await axiosInstance.get<{ inviteCode: string }>(
+    `/myrok/project/${projectId}`,
+  );
+
+  return data;
+};

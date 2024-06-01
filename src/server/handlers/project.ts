@@ -7,6 +7,7 @@ export const projectHandlers = () => {
     rest.post('/myrok/project', postCreateProject),
     rest.post('/myrok/project/participate', postJoinProject),
     rest.get(`/myrok/project/:projectId/members`, getProjectMemberNames),
+    rest.get(`/myrok/project/:projectId`, getInviteCode),
   ];
 };
 
@@ -81,5 +82,20 @@ const getProjectMemberNames: Parameters<typeof rest.get>[1] = async (
   return res(
     ctx.status(200),
     ctx.json({ projectMemberNames: projectMemberNames }),
+  );
+};
+
+const getInviteCode: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  const projectId = req.params.projectId;
+
+  const index = projectInviteCode.findIndex(
+    (project) => project.projectId === Number(projectId),
+  );
+
+  if (index === -1) return res(ctx.status(404));
+
+  return res(
+    ctx.status(200),
+    ctx.json({ inviteCode: projectInviteCode[index].inviteCode }),
   );
 };

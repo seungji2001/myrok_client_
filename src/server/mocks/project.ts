@@ -7,6 +7,13 @@ export const projectMemberNames = [
 
 export const projectInviteCode = [
   {
+    projectId: 1,
+    projectName: '우리의 프로젝트',
+    inviteCode: 'afkjg38d',
+    startDate: '1000-01-01',
+    endDate: '3000-01-01',
+  },
+  {
     projectId: 1000,
     projectName: 'aaaaaaaa',
     inviteCode: 'aaaaaaaa',

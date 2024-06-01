@@ -7,10 +7,30 @@ import { useProject } from '~/hooks/useProject';
 import { generateDateToStringFormat } from '~/utils/generateDateToStringFormat';
 import * as S from '~/components/common/Header/Header.styles';
 import UserInfoModal from '~/components/user/UserInfoModal/UserInfoModal';
+import { useToast } from '~/components/common/Toast/useToast';
+import { useGetInviteCode } from '~/hooks/@query/useGetInviteCode';
 
 const Header = () => {
   const navigate = useNavigate();
-  const { projectName, startDate, endDate } = useProject();
+  const { projectName, startDate, endDate, projectId } = useProject();
+  const data = useGetInviteCode(projectId);
+  const { showToast } = useToast();
+
+  const handleCopyButtonClick = () => {
+    if (data === undefined) {
+      showToast('error', '잠시 후에 다시 시도해주세요');
+      return;
+    }
+
+    const { inviteCode } = data;
+
+    try {
+      navigator.clipboard.writeText(inviteCode);
+      showToast('success', '초대 코드가 복사되었습니다.');
+    } catch (error) {
+      showToast('error', '초대 코드 복사에 실패했습니다.');
+    }
+  };
 
   return (
     <header css={S.headerContainer}>
@@ -38,7 +58,11 @@ const Header = () => {
             </Text>
           </div>
         )}
-        <Button variant="primary" css={S.copyButton}>
+        <Button
+          variant="primary"
+          css={S.copyButton}
+          onClick={handleCopyButtonClick}
+        >
           초대코드
         </Button>
       </div>
