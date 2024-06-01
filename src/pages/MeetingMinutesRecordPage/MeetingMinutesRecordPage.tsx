@@ -9,6 +9,10 @@ import * as S from '~/pages/MeetingMinutesRecordPage/MeetingMinutesRecordPage.st
 import SummaryBox from '~/components/meeting_minutes/SummaryBox/SummaryBox';
 import Button from '~/components/common/Button/Button';
 import { useGetUserInfo } from '~/hooks/@query/useGetUserInfo';
+import { usePostRecordDelete } from '~/hooks/@query/usePostRecordDelete';
+import { useToast } from '~/components/common/Toast/useToast';
+import { HTTPError } from '~/apis/HTTPError';
+import { ROUTES } from '~/constants/routes';
 
 const MeetingMinutesRecordPage = () => {
   const recordId = useParams().recordId;
@@ -26,11 +30,44 @@ const MeetingMinutesRecordPage = () => {
     recordDate,
   } = useGetRecord(Number(recordId));
   const { memberId } = useGetUserInfo();
+  const { mutatePostRecordDelete } = usePostRecordDelete(Number(recordId));
+  const { showToast } = useToast();
 
   const recordWriterName = memberList.find(
     (member) => member.memberId === recordWriterId,
   )?.name;
 
+  const handleRecordDelete = () => {
+    const isDelete = confirm(
+      '정말 회의록을 삭제하시겠습니까?\n삭제된 회의록은 복구할 수 없습니다.',
+    );
+
+    if (!isDelete) return;
+
+    mutatePostRecordDelete(
+      {
+        recordWriterId: recordWriterId,
+      },
+      {
+        onSuccess: () => showToast('success', '회의록이 삭제되었습니다.'),
+        onError: (error: Error) => {
+          if (error instanceof HTTPError) {
+            if (error.code === 'R001' || error.code === 'R004') {
+              showToast('error', error.message);
+
+              navigate(ROUTES.MEETING_MINUTES);
+              return;
+            }
+          }
+
+          showToast(
+            'error',
+            error.message === '' ? '잠시 후 다시 시도해주세요' : error.message,
+          );
+        },
+      },
+    );
+  };
   return (
     <div css={S.meetingMinutesRecordPageContainer}>
       <div css={S.recordDetailContainer}>
@@ -111,7 +148,9 @@ const MeetingMinutesRecordPage = () => {
             >
               수정하기
             </Button>
-            <Button css={S.deleteButtonStyling}>삭제하기</Button>
+            <Button css={S.deleteButtonStyling} onClick={handleRecordDelete}>
+              삭제하기
+            </Button>
           </div>
         )}
       </div>

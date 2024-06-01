@@ -41,6 +41,13 @@ export const patchRecord = (
   );
 };
 
+export const postRecordDelete = (
+  recordId: number,
+  data: { recordWriterId: number },
+) => {
+  return axiosInstance.post(`/myrok/records/delete/${recordId}`, data);
+};
+
 export const getRecord = async (recordId: number) => {
   const { data } = await axiosInstance.get<RecordDetail>(
     `/myrok/records/${recordId}`,

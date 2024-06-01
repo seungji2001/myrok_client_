@@ -23,6 +23,7 @@ export const recordHandler = () => {
     rest.patch('/myrok/records/:recordId', patchRecord),
     rest.get('/myrok/:projectId/dashboard', getDashBoardTags),
     rest.get('/myrok/:projectId/tagList', getRecordTagList),
+    rest.post('/myrok/records/delete/:recordId', postRecordDelete),
   ];
 };
 
@@ -228,4 +229,39 @@ const getRecordTagList: Parameters<typeof rest.get>[1] = async (
     ctx.status(200),
     ctx.json({ totalCount: totalCount, tagList: [...tagList] }),
   );
+};
+
+const postRecordDelete: Parameters<typeof rest.post>[1] = async (
+  req,
+  res,
+  ctx,
+) => {
+  const recordId = Number(req.params.recordId);
+  const deleteIndex = recordList.findIndex(
+    (data) => data.recordId === recordId,
+  );
+  if (deleteIndex === -1) {
+    return res(ctx.status(404));
+  }
+
+  const deleteDetailIndex = record.findIndex(
+    (data) => data.recordId === recordId,
+  );
+  if (deleteDetailIndex === -1) {
+    return res(ctx.status(404));
+  }
+
+  record[deleteDetailIndex].tagList.forEach((key) => {
+    if (tags.has(key)) {
+      const currValue = tags.get(key);
+      if (currValue != undefined) {
+        tags.set(key, currValue - 1);
+      }
+    }
+  });
+
+  recordList.splice(deleteIndex, 1);
+  record.splice(deleteDetailIndex, 1);
+
+  return res(ctx.status(204));
 };
