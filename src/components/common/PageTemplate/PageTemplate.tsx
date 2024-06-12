@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import Header from '~/components/common/Header/Header';
+import NavigationBar from '~/components/common/NavigationBar/NavigationBar';
 import { Theme } from '~/styles/Theme';
 
 const pageContainer = css`
@@ -15,11 +16,19 @@ const pageContainer = css`
   background-color: ${Theme.color.gray50};
 `;
 
+export const innerContainer = css`
+  display: flex;
+  height: 100%;
+`;
+
 const PageTemplate = () => {
   return (
     <div css={pageContainer}>
       <Header />
-      <Outlet />
+      <div css={innerContainer}>
+        <NavigationBar />
+        <Outlet />
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { useMeetingMinutesPage } from '~/pages/MeetingMinutesPage/useMeetingMinu
 
 const meetingMinutesPageContainer = css`
   padding: 30px;
+  width: 100%;
 `;
 
 const meetingMinutesMainContainer = css`

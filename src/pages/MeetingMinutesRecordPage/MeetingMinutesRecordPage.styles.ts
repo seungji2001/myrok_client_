@@ -5,6 +5,7 @@ export const meetingMinutesRecordPageContainer = css`
   display: flex;
   justify-content: space-between;
   padding: 30px;
+  width: 100%;
   height: calc(100% - 160px);
 `;
 

@@ -25,6 +25,7 @@ export const tableBody = css`
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 `;
 
 export const table = css`

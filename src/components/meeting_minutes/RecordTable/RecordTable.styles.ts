@@ -15,6 +15,7 @@ export const tableContainer = css`
   flex-direction: column;
   align-items: center;
 
+  width: 100%;
   height: calc(100% - 70px);
   padding: 30px;
 
