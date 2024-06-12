@@ -6,6 +6,7 @@ export const meetingMinutesEditPageContainer = css`
   justify-content: space-between;
   padding: 30px;
   height: calc(100% - 160px);
+  width: 100%;
 `;
 
 export const recordDetailContainer = css`

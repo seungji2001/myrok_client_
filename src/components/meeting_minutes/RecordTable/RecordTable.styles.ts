@@ -6,7 +6,7 @@ export const container = css`
   flex-direction: column;
   row-gap: 10px;
 
-  width: 100%;
+  width: calc(100% - 180px);
   max-height: 650px;
 `;
 
@@ -15,7 +15,6 @@ export const tableContainer = css`
   flex-direction: column;
   align-items: center;
 
-  width: 100%;
   height: calc(100% - 70px);
   padding: 30px;
 

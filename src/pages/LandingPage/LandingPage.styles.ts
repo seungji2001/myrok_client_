@@ -3,10 +3,10 @@ import { css } from '@emotion/react';
 
 export const landingPageContainer = css`
   display: flex;
-  flex-direction: column;
   overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
 
-  width: 100vw;
   height: 90vh;
   padding: 20px 40px;
 `;

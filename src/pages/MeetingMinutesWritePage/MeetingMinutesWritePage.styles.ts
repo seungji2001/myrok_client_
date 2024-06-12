@@ -5,6 +5,7 @@ export const meetingMinutesWritePageContainer = css`
   justify-content: space-between;
   padding: 30px;
   height: calc(100% - 160px);
+  width: 100%;
 `;
 
 export const textEditorWrapper = css`

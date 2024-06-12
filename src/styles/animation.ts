@@ -57,3 +57,12 @@ to {
   transform: translateX(140%);
 }  
 `;
+
+export const cardUp = keyframes`
+ 0% {
+    transform: rotate(0) translateY(0px);
+  }
+  100% {
+    transform: rotate(-10deg) translateY(-120px);
+  }
+`;

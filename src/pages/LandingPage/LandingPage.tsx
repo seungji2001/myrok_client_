@@ -2,6 +2,7 @@
 import * as S from '~/pages/LandingPage/LandingPage.styles';
 import Title from '~/components/common/Title/Title';
 import LogInModal from '~/components/landing/LogInModal/LogInModal';
+import IntroCard from '~/components/landing/IntroCard/IntroCard';
 
 const LandingPage = () => {
   return (
@@ -10,6 +11,7 @@ const LandingPage = () => {
         <Title />
         <LogInModal />
       </div>
+      <IntroCard />
     </div>
   );
 };
