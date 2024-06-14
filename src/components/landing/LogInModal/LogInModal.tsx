@@ -4,18 +4,24 @@ import { CloseBoldIcon } from '~/assets/svg';
 import Button from '~/components/common/Button/Button';
 import Modal from '~/components/common/Modal/Modal';
 import Text from '~/components/common/Text/Text';
+import { useToast } from '~/components/common/Toast/useToast';
 import * as S from '~/components/landing/LogInModal/LogInModal.styles';
 import { usePostGoogleLogin } from '~/hooks/@query/usePostGoogleLogin';
 import { Theme } from '~/styles/Theme';
 
 const LogInModal = () => {
   const { mutateGoogleLogin } = usePostGoogleLogin();
+  const { showToast } = useToast();
 
   const handleGoogleLoginClick = () => {
     mutateGoogleLogin(undefined, {
       onSuccess: (data) => {
         const { loginUrl } = data;
+        if (loginUrl === undefined) {
+          showToast('error', '문제가 발생했습니다. 잠시 후 다시 시도해주세요');
 
+          return;
+        }
         window.location.href = loginUrl;
       },
     });

@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
-import { postGoogleLogin } from '~/apis/user';
+import { getGoogleLogin } from '~/apis/user';
 
 export const usePostGoogleLogin = () => {
   const { mutate } = useMutation({
-    mutationFn: postGoogleLogin,
+    mutationFn: getGoogleLogin,
   });
 
   return { mutateGoogleLogin: mutate };

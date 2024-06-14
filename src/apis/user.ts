@@ -3,8 +3,8 @@ import { instance } from '~/apis/instance';
 import { LOCAL_STORAGE } from '~/constants/api';
 import type { UserInfo, UserProjectInfo } from '~/types/user';
 
-export const postGoogleLogin = async () => {
-  const { data } = await instance.post<{ loginUrl: string }>(
+export const getGoogleLogin = async () => {
+  const { data } = await instance.get<{ loginUrl: string }>(
     '/myrok/auth/google',
   );
 
