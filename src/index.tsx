@@ -8,9 +8,9 @@ import { serviceWorker } from '~/server/browser';
 import { ToastProvider } from '~/components/common/Toast/ToastContext';
 import AppRouter from '~/router/AppRouter';
 
-if (process.env.WORKER === 'on') {
-  serviceWorker.start({ onUnhandledRequest: 'bypass' });
-}
+// if (process.env.WORKER === 'on') {
+//   serviceWorker.start({ onUnhandledRequest: 'bypass' });
+// }
 
 const queryClient = new QueryClient({
   defaultOptions: {
