@@ -13,6 +13,15 @@ export const nav = css`
 
 export const menuContainer = css`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 80%;
+`;
+
+export const menuInnerContainer = css`
+  display: flex;
   align-items: center;
 
   width: 100%;

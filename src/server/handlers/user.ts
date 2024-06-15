@@ -3,7 +3,7 @@ import { userInfo } from '~/server/mocks/user';
 
 export const userHandlers = () => {
   return [
-    rest.post('/myrok/auth/google', postGoogleLogin),
+    rest.get('/myrok/auth/google', getGoogleLogin),
     rest.get('/myrok/me/project', getUserProjectInfo),
     rest.get('/myrok/me', getUserInfo),
   ];
@@ -16,11 +16,7 @@ export const fakeProjectInfo = {
   endDate: '3000-01-01',
 };
 
-const postGoogleLogin: Parameters<typeof rest.post>[1] = async (
-  _,
-  res,
-  ctx,
-) => {
+const getGoogleLogin: Parameters<typeof rest.post>[1] = async (_, res, ctx) => {
   return res(
     ctx.status(201),
     ctx.json({

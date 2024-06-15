@@ -8,6 +8,7 @@ export const projectHandlers = () => {
     rest.post('/myrok/project/participate', postJoinProject),
     rest.get(`/myrok/project/:projectId/members`, getProjectMemberNames),
     rest.get(`/myrok/project/:projectId`, getInviteCode),
+    rest.delete('/myrok/project', deleteProject),
   ];
 };
 
@@ -98,4 +99,17 @@ const getInviteCode: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
     ctx.status(200),
     ctx.json({ inviteCode: projectInviteCode[index].inviteCode }),
   );
+};
+
+const deleteProject: Parameters<typeof rest.delete>[1] = async (
+  _,
+  res,
+  ctx,
+) => {
+  fakeProjectInfo.projectId = 0;
+  fakeProjectInfo.projectName = '';
+  fakeProjectInfo.startDate = '1000-01-01';
+  fakeProjectInfo.endDate = '3000-01-01';
+
+  return res(ctx.status(200));
 };

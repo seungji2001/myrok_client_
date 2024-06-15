@@ -9,6 +9,12 @@ export const postJoinProject = (data: { inviteCode: string }) => {
   return axiosInstance.post('/myrok/project/participate', data);
 };
 
+export const deleteProject = (projectId: number) => {
+  return axiosInstance.delete('/myrok/project', {
+    data: { projectId: projectId },
+  });
+};
+
 export const getProjectMemberNames = async (projectId: number) => {
   const { data } = await axiosInstance.get<{
     projectMemberNames: ProjectMemberNames[];
