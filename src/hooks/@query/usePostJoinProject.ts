@@ -11,7 +11,7 @@ export const usePostJoinProject = () => {
   const { mutate } = useMutation({
     mutationFn: postJoinProject,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['userProjectInfo'] });
+      queryClient.clear();
     },
     onError: (error: ErrorResponseData) => {
       if (error.code && error.code === ERROR_CODE.INVALID_INVITE_CODE)

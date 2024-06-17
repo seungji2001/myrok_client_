@@ -7,6 +7,7 @@ export const tableContainer = css`
   align-items: center;
 
   height: calc(100% - 70px);
+  width: 100%;
   padding: 30px;
 
   background-color: ${Theme.color.white};

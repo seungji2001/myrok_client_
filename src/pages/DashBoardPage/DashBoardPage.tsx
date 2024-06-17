@@ -33,39 +33,42 @@ const DashBoardPage = () => {
   return (
     <div css={S.dashBoardPageContainer}>
       <div css={S.pieChartContainer}>
-        <PieChart radius={240} data={chartData} />
+        <PieChart radius={240} data={etcPercentage === 100 ? [] : chartData} />
         <div css={S.tagsGrid}>
-          {chartData.map((data, i) => {
-            const color = generateDarkenHex(Theme.piePreset[i], 30);
+          {etcPercentage !== 100 ? (
+            chartData.map((data, i) => {
+              const color = generateDarkenHex(Theme.piePreset[i], 30);
 
-            if (i === 4)
+              if (i === 4)
+                return (
+                  <Tag
+                    key={i}
+                    color={generateDarkenHex(Theme.piePreset[4], 30)}
+                    content={`${data.label} (${data.percentage}%)`}
+                  />
+                );
+
               return (
-                <Tag
+                <Tag.Check
                   key={i}
+                  act="check"
                   color={color}
+                  outLine={true}
                   content={`${data.label} (${data.percentage}%)`}
+                  handleTagCheck={() => {
+                    const isMoving = confirm(
+                      `"${data.label}" 태그가 입력된 회의록을 보시겠습니까?`,
+                    );
+
+                    if (isMoving)
+                      navigate(
+                        `${ROUTES.MEETING_MINUTES}?tagName=${data.label}`,
+                      );
+                  }}
                 />
               );
-
-            return (
-              <Tag.Check
-                key={i}
-                act="check"
-                color={color}
-                outLine={true}
-                content={`${data.label} (${data.percentage}%)`}
-                handleTagCheck={() => {
-                  const isMoving = confirm(
-                    `"${data.label}" 태그가 입력된 회의록을 보시겠습니까?`,
-                  );
-
-                  if (isMoving)
-                    navigate(`${ROUTES.MEETING_MINUTES}?tagName=${data.label}`);
-                }}
-              />
-            );
-          })}
-          {etcPercentage === 100 && (
+            })
+          ) : (
             <Text weight="semiBold" size="lg">
               회의록 작성시 태그를 입력해보세요!
             </Text>

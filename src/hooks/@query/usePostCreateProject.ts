@@ -11,9 +11,7 @@ export const usePostCreateProject = () => {
   const { mutate } = useMutation({
     mutationFn: postCreateProject,
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['userProjectInfo'],
-      });
+      queryClient.clear();
     },
     onError: (error: ErrorResponseData) => {
       if (error.code && error.code === ERROR_CODE.DUPLICATE_PROJECT)
