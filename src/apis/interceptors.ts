@@ -52,11 +52,9 @@ export const handleTokenError = async (
   if (
     status === HTTP_STATUS_CODE.BAD_REQUEST &&
     (data.code === ERROR_CODE.INVALID_ACCESS_TOKEN ||
-      data.code === ERROR_CODE.INVALID_REFRESH_TOKEN ||
-      data.code === ERROR_CODE.EXPIRED_REFRESH_TOKEN ||
       data.code === ERROR_CODE.NULL_REFRESH_TOKEN ||
+      data.code === ERROR_CODE.MALFORMED_ACCESS_TOKEN ||
       data.code === ERROR_CODE.UNEXPECTED_TOKEN_ERROR ||
-      data.code === ERROR_CODE.UNAUTHORIZED ||
       data.code === ERROR_CODE.INVALID_ACCESS_TOKEN)
   ) {
     localStorage.removeItem(LOCAL_STORAGE.ACCESS_TOKEN);

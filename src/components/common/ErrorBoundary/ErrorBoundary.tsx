@@ -1,4 +1,4 @@
-import type { ComponentType, ErrorInfo, PropsWithChildren } from 'react';
+import type { ComponentType, PropsWithChildren } from 'react';
 import { Component } from 'react';
 import { HTTPError } from '~/apis/HTTPError';
 import { ErrorProps } from '~/components/common/Error/Error';
