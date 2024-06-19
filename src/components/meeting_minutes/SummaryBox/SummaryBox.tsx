@@ -16,7 +16,7 @@ const SummaryBox = (props: SummaryBoxProps) => {
     <div css={S.summaryBoxContainer}>
       <RobotIcon />
       <div css={S.summaryContainer}>
-        {summary.length === 0 ? (
+        {summary === null ? (
           <Text weight="bold">
             열심히 회의록을 요약하고 있어요! 잠시만 기다려주세요..
           </Text>
