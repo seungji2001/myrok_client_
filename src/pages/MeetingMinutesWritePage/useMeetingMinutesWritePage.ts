@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useToast } from '~/components/common/Toast/useToast';
 import { useGetUserInfo } from '~/hooks/@query/useGetUserInfo';
 import { usePostRecord } from '~/hooks/@query/usePostRecord';
@@ -15,6 +15,10 @@ export const useMeetingMinutesWritePage = () => {
   const { showToast } = useToast();
   const { projectId } = useProject();
   const { memberId } = useGetUserInfo();
+
+  useEffect(() => {
+    setMemberList([memberId]);
+  }, [memberId]);
 
   const handleRecordWriteSubmit = () => {
     if (recordName.length === 0) {
@@ -69,6 +73,8 @@ export const useMeetingMinutesWritePage = () => {
   };
 
   return {
+    memberId,
+
     handlers: {
       setRecordData,
       setTagList,

@@ -7,6 +7,7 @@ import * as S from '~/components/common/Tag/Tag.styles';
 interface CheckTagProps extends TagProps {
   act: 'check';
   handleTagCheck: () => void;
+  checked?: boolean;
 }
 
 const CheckTag = (props: CheckTagProps, ref: ForwardedRef<HTMLSpanElement>) => {
@@ -15,14 +16,17 @@ const CheckTag = (props: CheckTagProps, ref: ForwardedRef<HTMLSpanElement>) => {
     color = Theme.color.gray250,
     outLine = false,
     handleTagCheck,
+    checked = false,
     ...attribute
   } = props;
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(checked);
 
   return (
     <span
       css={S.checkTagWrapper(color, outLine, isChecked)}
       onClick={() => {
+        if (checked === true) return;
+
         setIsChecked((prev) => !prev);
         handleTagCheck();
       }}

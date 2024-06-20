@@ -5,13 +5,14 @@ import { useGetProjectMemberNames } from '~/hooks/@query/useGetProjectMemberName
 import * as S from '~/components/meeting_minutes/ParticipantInfoBox/ParticipantInfoBox.styles';
 
 interface ParticipantInfoBoxProps {
+  recordWriterId: number;
   handleMemberListChange: (memberList: number[]) => void;
 }
 
 const ParticipantInfoBox = (props: ParticipantInfoBoxProps) => {
+  const { handleMemberListChange, recordWriterId } = props;
   const { projectMemberNames } = useGetProjectMemberNames();
-  const [participants, setParticipants] = useState<number[]>([]);
-  const { handleMemberListChange } = props;
+  const [participants, setParticipants] = useState<number[]>([recordWriterId]);
 
   const handleParticipantsCheck = (memberId: number) => {
     if (participants.includes(memberId)) {
@@ -38,6 +39,7 @@ const ParticipantInfoBox = (props: ParticipantInfoBoxProps) => {
               act="check"
               handleTagCheck={() => handleParticipantsCheck(memberId)}
               content={name}
+              checked={memberId === recordWriterId}
             />
           );
         })}

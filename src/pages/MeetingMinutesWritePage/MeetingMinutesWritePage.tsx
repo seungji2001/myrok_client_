@@ -7,6 +7,8 @@ import { useMeetingMinutesWritePage } from '~/pages/MeetingMinutesWritePage/useM
 
 const MeetingMinutesWritePage = () => {
   const {
+    memberId,
+
     handlers: {
       setRecordData,
       setTagList,
@@ -26,7 +28,10 @@ const MeetingMinutesWritePage = () => {
           handleTagListChange={setTagList}
           handleRecordNameChange={setRecordName}
         />
-        <ParticipantInfoBox handleMemberListChange={setMemberList} />
+        <ParticipantInfoBox
+          recordWriterId={memberId}
+          handleMemberListChange={setMemberList}
+        />
         <Button
           css={S.writeButton}
           variant="primary"
