@@ -72,7 +72,10 @@ const MeetingMinutesRecordPage = () => {
     <div css={S.meetingMinutesRecordPageContainer}>
       <div css={S.recordDetailContainer}>
         <SummaryBox recordId={Number(recordId)} />
-        <div dangerouslySetInnerHTML={{ __html: recordContent }}></div>
+        <div
+          css={S.contentStyling}
+          dangerouslySetInnerHTML={{ __html: recordContent }}
+        ></div>
       </div>
       <div css={S.infoContainer}>
         <div css={S.recordWriteInfoBoxContainer}>

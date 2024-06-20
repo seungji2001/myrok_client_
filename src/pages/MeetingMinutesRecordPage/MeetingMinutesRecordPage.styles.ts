@@ -9,6 +9,21 @@ export const meetingMinutesRecordPageContainer = css`
   height: calc(100% - 160px);
 `;
 
+export const contentStyling = css`
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    padding: 6px;
+    align-items: center;
+    text-align: center;
+  }
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+`;
+
 export const recordDetailContainer = css`
   width: 60%;
   min-height: 400px;

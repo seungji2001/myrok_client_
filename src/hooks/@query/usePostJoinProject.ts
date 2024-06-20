@@ -14,8 +14,13 @@ export const usePostJoinProject = () => {
       queryClient.clear();
     },
     onError: (error: ErrorResponseData) => {
-      if (error.code && error.code === ERROR_CODE.INVALID_INVITE_CODE)
+      if (
+        error.code &&
+        (error.code === ERROR_CODE.INVALID_INVITE_CODE ||
+          error.code === ERROR_CODE.DELETED_PROJECT_CODE)
+      )
         showToast('error', error.message ?? '잘못된 참여코드 입니다.');
+      else showToast('error', '잘못된 참여코드 입니다.');
     },
   });
 
