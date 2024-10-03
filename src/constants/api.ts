@@ -60,4 +60,4 @@ export const LOCAL_STORAGE = {
 } as const;
 
 export const AXIOS_BASE_URL =
-  'https://b0990339c78d470de00d3dd32dd4db7f1.apppaas.app' as const;
+  'https://b0990339c78d470de00d3dd32dd4db7f1.apppaas.app/' as const;
